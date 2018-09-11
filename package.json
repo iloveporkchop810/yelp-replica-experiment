@@ -12,7 +12,10 @@
     "test": "jest",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon ./server/index.js",
-    "seed-files": "node ./database/seedFiles/dataGenerator.js"
+    "db-init": "mysql -u root < ./database/schema.sql",
+    "seed-files": "node ./database/seedFiles/dataGenerator.js",
+    "seed-db": "mysqlimport -u root --local --lines-terminated-by='*' zelp ./database/seedFiles/users.csv ./database/seedFiles/businesses.csv ./database/seedFiles/reviews.csv",
+    "db-start": "npm run db-init && npm run seed-files && npm run seed-db"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
