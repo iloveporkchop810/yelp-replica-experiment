@@ -13,11 +13,11 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'env']
         },
-      },
+      }
     ],
   },
   output: {
     path: __dirname + '/public',
     filename: 'app.js',
   }
-};
+}
