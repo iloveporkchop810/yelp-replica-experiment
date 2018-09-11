@@ -27,8 +27,8 @@ let seedDataBusinesses = '';
     }
  })();
 
-fs.writeFileSync('reviews.csv', seedDataReviews)
-fs.writeFileSync('users.csv', seedDataUsers)
-fs.writeFileSync('businesses.csv', seedDataBusinesses)
+fs.writeFileSync('./database/seedFiles/reviews.csv', seedDataReviews)
+fs.writeFileSync('./database/seedFiles/users.csv', seedDataUsers)
+fs.writeFileSync('./database/seedFiles/businesses.csv', seedDataBusinesses)
 
     
