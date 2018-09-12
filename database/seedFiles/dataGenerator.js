@@ -15,6 +15,7 @@ let seedDataBusinesses = '';
     }
 })();
 
+//NOTE TO SELF, took out quotes for address. have not tested, incase bug, that's probaly it.
 (function generateUsersSeedData () {
     for (var i = 0; i < 500; i ++) {
         seedDataUsers += `${faker.name.findName()}\t${faker.address.city()}, ${faker.address.stateAbbr()}\t${faker.random.number(1000)}\t${faker.random.number(300)}\t${faker.random.number(50)}\t${faker.image.avatar()}\t${faker.random.arrayElement(["Elite '18",null,null,null,null,null,null,null])}*`;
@@ -31,4 +32,4 @@ fs.writeFileSync('./database/seedFiles/reviews.csv', seedDataReviews)
 fs.writeFileSync('./database/seedFiles/users.csv', seedDataUsers)
 fs.writeFileSync('./database/seedFiles/businesses.csv', seedDataBusinesses)
 
-    
+//'npm run db-start' to create and seed database     

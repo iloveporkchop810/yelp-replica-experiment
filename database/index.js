@@ -37,7 +37,6 @@ const reviewsSorting = (businessSortParam, callback) => {
         }
     })
 }
-//Maybe here would be better to just filter from results i already have??\
 
 const reviewsFilter = (businessfilterParam, callback) => {
     let queryString = `SELECT * FROM reviews INNER JOIN users 
@@ -46,19 +45,26 @@ const reviewsFilter = (businessfilterParam, callback) => {
                        AND reviews.Language = '${businessfilterParam[1]}'`;
     connection.query(queryString, (err, result) => {
         if (err) {
-            // callback(err, null);
-            console.log(err)
+            callback(err, null);
         } else {
             callback(null, result);
         }
     })
 }
 
-// const postNewReview = () => {
+const postNewReview = (reviewParams, callback) => {
+    let queryString = `INSERT INTO reviews (StarRating, ReviewBody, DateTime, Language, Businesskey, UserKey)
+                       VALUES (?, ?, ?, ?, ?, ?)`;
+    connection.query(queryString, reviewParams, (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result);
+        }
+    })
+}
 
-// }
-
-// module.exports = connection;
 module.exports.businessPageReviewsLoading = businessPageReviewsLoading;
 module.exports.reviewsSorting = reviewsSorting;
 module.exports.reviewsFilter = reviewsFilter;
+module.exports.postNewReview = postNewReview;
