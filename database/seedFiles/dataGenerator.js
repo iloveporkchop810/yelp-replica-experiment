@@ -17,7 +17,7 @@ let seedDataBusinesses = '';
 
 (function generateUsersSeedData () {
     for (var i = 0; i < 500; i ++) {
-        seedDataUsers += `${faker.name.findName()}\t"${faker.address.city()}, ${faker.address.stateAbbr()}"\t${faker.random.number(1000)}\t${faker.random.number(300)}\t${faker.random.number(50)}\t${faker.image.avatar()}\t${faker.random.arrayElement(["Elite '18",null,null,null,null,null,null,null])}*`;
+        seedDataUsers += `${faker.name.findName()}\t${faker.address.city()}, ${faker.address.stateAbbr()}\t${faker.random.number(1000)}\t${faker.random.number(300)}\t${faker.random.number(50)}\t${faker.image.avatar()}\t${faker.random.arrayElement(["Elite '18",null,null,null,null,null,null,null])}*`;
     }
 })();
 
