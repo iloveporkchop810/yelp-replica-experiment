@@ -8,6 +8,4 @@
 }
 .review-parts {
     grid-area: review;
-    border-style: solid;
-    border-width: 1px;
 }

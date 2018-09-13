@@ -1,0 +1,59 @@
+.main-user {
+    margin: 0;
+    padding: 18px 0;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 17px;
+}
+
+.review-parts {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.review-body {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+.bottom-bar {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+}
+.voter-statement {
+    white-space: nowrap;
+    margin-bottom: 6px;
+    
+   
+}
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    border-image-repeat: stretch;
+    
+}
+
+.button {
+    background-color: white;
+    border-radius: 8%;
+    box-shadow: 2ch;
+    height: 30px;
+    width: 80px;
+    padding: 5px 8px;
+    font-weight: bold;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.button-image {
+    width: 15px;
+    height: auto;
+}
+
+.flag-image {
+    width: 15px;
+    height: auto;
+}
+
+.flag-button {
+    justify-self: right;
+    text-align: right;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import './Passport.css';
 import zelpFriends from './zelpFriends.png';
 import zelpReviews from './zelpReviews.png';
+import zelpPhotos from './zelpPhotos.png';
 
 const Passport = ({user, photo}) => {
     return (
@@ -20,30 +21,26 @@ const Passport = ({user, photo}) => {
                         </li>
                     </ul>
                     <div className="no-bullet">
-                        <div className='friends-count'>
-                            <div className='letters'>
-                                
+                        <div className='friends-count letters'>
                                 <img className='icon' src={zelpFriends}/>       
                                 <b>{user.FriendsCount}</b>
                                 friends
-                                
-                            </div>
                         </div>
-                        <div className='reviews-count'>
-                            <span className='letters'>
+                        <div className='reviews-count letters'>
                                 <img className='icon' src={zelpReviews}/>  
                                 <b>{user.ReviewsCount}</b>
                                 reviews
-                            </span>
                         </div>
-                        {user.PhotosCount && <div className='photo-count'>
-                            <span>(camera image)</span>
-                            <b>{user.PhotosCount}</b>
-                            photos
-                        </div>}
-                        {user.Status !== 'null' && <div className='status'>
-                            <b>{user.Status}</b>
-                        </div>}
+                        {user.PhotosCount !== 0 && 
+                            <div className='photo-count letters'>
+                                <img className='icon' src={zelpPhotos}/>  
+                                <b>{user.PhotosCount}</b>
+                                photos
+                            </div>}
+                        {user.Status !== 'null' && 
+                            <div className='status'>
+                                <b>{user.Status}</b>
+                            </div>}
                     
                     </div>
                 </div>

@@ -19,7 +19,6 @@ class App extends React.Component {
     render () {
         return (
             <div className='review-section'>
-            IS ANYTHING HAPPENING?
                 <Search />
                 <MainUser user={this.state.mainUser}/>
                 {this.state.userReviews.map(user => <User user={user} />)}
