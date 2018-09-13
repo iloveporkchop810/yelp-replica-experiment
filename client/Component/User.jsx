@@ -1,7 +1,8 @@
 import React from 'react';
-import Hover from 'Hover.jsx';
+import Passport from './Passport.jsx';
+import Hover from './Hover.jsx';
 
-class AllUsers extends React.Component {
+class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,12 +14,9 @@ class AllUsers extends React.Component {
             <div className='main-user'>
                 <div className='user-section'>
                     <div className='user-parts'>
-                        <div className='info'>
-                        </div>
-                        <div className='photo'>
-                        </div>
+                        <Passport user={this.props.user}/>
+                        {this.state.hover && <Hover />}
                     </div>
-                    {this.state.hover && <Hover />}
                 </div>
                 <div className='review-parts'>
                     <div className='star-bar'>
@@ -39,4 +37,4 @@ class AllUsers extends React.Component {
     }
 }
 
-export default AllUsers;
+export default User;

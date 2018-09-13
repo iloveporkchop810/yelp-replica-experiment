@@ -1,4 +1,4 @@
-[
+const BusinessSample = [
   {
       "StarRating": 3,
       "ReviewBody": "Ut sed quaerat illum quos et. Consectetur nobis aut voluptatem nesciunt hic facilis. Est eveniet inventore commodi ipsam quibusdam ut.\n \rMaiores expedita expedita corporis velit qui non omnis optio. Qui voluptatibus ullam laudantium pariatur nihil voluptas. Assumenda magni voluptatibus modi voluptatem eius est occaecati officiis voluptas.\n \rQuis aut atque voluptas quis ut sint facilis quibusdam. In nam recusandae voluptas sit praesentium. Mollitia corporis sit quae. Saepe assumenda molestias sit veniam voluptate enim inventore. Repudiandae et saepe est vitae.",
@@ -190,3 +190,5 @@
       "Status": "Elite '18"
   }
 ]
+
+module.exports =  BusinessSample;

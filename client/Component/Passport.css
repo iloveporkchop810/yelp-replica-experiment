@@ -1,0 +1,12 @@
+
+.user-parts {
+    /* grid-area: "user"; */
+    border-style: solid;
+    border-width: 1px;
+}
+.photo {
+    width: 60px;
+    height: auto;
+    border-radius: 6%; 
+
+}

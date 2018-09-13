@@ -1,14 +1,13 @@
 import React from 'react';
+import SophiaPic from '../../SampleGETresponse/SophiaSample.jpg';
+import Passport from './Passport.jsx';
+import './MainUser.css';
 
-
-const MainUser = ({}) => {
+const MainUser = ({user}) => {
     return (
         <div className='main-user'>
             <div className='user-parts'>
-                <div className='info'>
-                </div>
-                <div className='photo'>
-                </div>
+                <Passport user={user} photo={SophiaPic}/>
             </div>
             <div className='review-parts'>
                 <div className='greybox'>

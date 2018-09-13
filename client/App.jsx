@@ -4,25 +4,28 @@ import axios from 'axios';
 import $ from 'jquery';
 import Search from './Component/Search.jsx';
 import MainUser from './Component/MainUser.jsx';
-import AllUsers from './Component/AllUsers.jsx';
+import User from './Component/User.jsx';
+import SampleBiz from '../SampleGETresponse/SampleGetBusiness.js';
+import MainPerson from '../SampleGETresponse/LoggedInUser.js';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mainUser: [],
-            userReviews: []
+            mainUser: MainPerson,
+            userReviews: SampleBiz
         }
     }
     render () {
         return (
             <div className='review-section'>
+            IS ANYTHING HAPPENING?
                 <Search />
-                <MainUser />
-                {this.state.userReviews.map(user => <AllUsers user={user} />)}
+                <MainUser user={this.state.mainUser}/>
+                {this.state.userReviews.map(user => <User user={user} />)}
             </div>
         )
     }
 }
 
-reactDOM.render(<App />, document.getElementsById('app'));
+reactDOM.render(<App />, document.getElementById('app'));
