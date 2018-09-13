@@ -14,7 +14,7 @@ class User extends React.Component {
             <div className='main-user'>
                 <div className='user-section'>
                     <div className='user-parts'>
-                        <Passport user={this.props.user}/>
+                        <Passport user={this.props.user} photo={this.props.user.PhotoLink}/>
                         {this.state.hover && <Hover />}
                     </div>
                 </div>
