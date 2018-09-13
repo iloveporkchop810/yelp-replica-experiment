@@ -1,23 +1,29 @@
-const webpack = require('webpack');
 const path = require('path');
+const SRC_DIR = path.join(__dirname, '/client');
+const DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
-  context: __dirname + '/client',
-  entry: './index.js',
+  // context: __dirname + '/client',
+  entry: `${SRC_DIR}/App.jsx`,
+  output: {
+    path: DIST_DIR,
+    filename: 'bundle.js',
+  },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
+        include: SRC_DIR,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'env']
+          presets: ['react', 'env']
         },
-      }
+      },
+      {
+        test: /\.css?$/,
+        loader: [ 'style-loader', 'css-loader' ]
+      },
     ],
-  },
-  output: {
-    path: __dirname + '/public',
-    filename: 'app.js',
   }
 }
