@@ -1,0 +1,85 @@
+.review-header {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 8px;
+}
+
+.title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+    color: #d32323;
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.28571em;
+}
+
+b {
+    font-weight: normal;
+    color: #333;
+}
+.search-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-section{
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+    grid-template-areas: "bar sort filter";
+}
+.search-bar {
+    grid-area: bar;
+    display: table;
+    min-width: 100%;
+    table-layout: auto;
+    margin-right: 30
+}
+.form-bar {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+.search-button {
+    background: #dd1600;
+    position: relative;
+    left: -1px;
+    width: 37px;
+    height: 30px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: top;
+}
+.search-img {
+    display: flex;
+    flex-direction: row;
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
+}
+.input {
+    width: 222px;
+    padding: 5px 9px;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: top;
+    color: grey;
+    font-size: 14px;
+}
+.search-it {
+    width: 222px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.sort-dropdown {
+    grid-area: sort;
+    display: flex;
+    justify-content: center;
+}
+.filter-dropdown {
+    grid-area: filter;
+}

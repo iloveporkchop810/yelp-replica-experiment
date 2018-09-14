@@ -1,6 +1,6 @@
 var user = {
       "id": 501,
-      "Name": "Sophia Chiu",
+      "UserName": "Sophia Chiu",
       "Location": "San Francisco, CA",
       "FriendsCount": 3,
       "ReviewsCount": 5,

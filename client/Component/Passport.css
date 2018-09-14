@@ -5,6 +5,7 @@
 }
 .photo-container {
     grid-area: pics;
+    padding-right: 10px;
 }
 
 .photo {
@@ -25,10 +26,13 @@
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    padding-bottom: 5px;
 }
 
 .location {
     font-size: 12px;
+    font-weight: bold;
+    padding-top: 4px;
 }
 
 .user-name-link {
@@ -41,16 +45,27 @@
 
 .icon {
     width: 18px;
-    height: auto;
+    height: 15px;
+    padding-right: 4px;
 }
 
 .letters {
     font-size: 12px;
+    /* font-weight: bold; */
     color: #666;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-bottom: 2px;
 }
 
 .status {
     color: #f15c00;
     font-weight: bold;
     font-size: 12px;
+}
+
+.num {
+    font-weight: bold;
+    padding-right: 4px;
 }

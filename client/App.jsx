@@ -7,6 +7,7 @@ import MainUser from './Component/MainUser.jsx';
 import User from './Component/User.jsx';
 import SampleBiz from '../SampleGETresponse/SampleGetBusiness.js';
 import MainPerson from '../SampleGETresponse/LoggedInUser.js';
+import './App.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class App extends React.Component {
     render () {
         return (
             <div className='review-section'>
-                <Search />
+                <Search business={this.state.userReviews[0].BizName}/>
                 <MainUser user={this.state.mainUser}/>
                 {this.state.userReviews.map(user => <User user={user} />)}
             </div>

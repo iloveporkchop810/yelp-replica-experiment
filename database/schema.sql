@@ -4,7 +4,7 @@ CREATE DATABASE zelp;
 USE zelp;
 
 CREATE TABLE users (
-    Name VARCHAR(60) NOT NULL,
+    UserName VARCHAR(60) NOT NULL,
     Location VARCHAR(60) NOT NULL,
     FriendsCount INT,
     ReviewsCount INT,
@@ -16,7 +16,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE businesses (
-    Name VARCHAR(60) NOT NULL,
+    BizName VARCHAR(60) NOT NULL,
     id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id)
 );

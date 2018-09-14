@@ -11,7 +11,9 @@ connection.connect();
 const businessPageReviewsLoading = (businessId, callback) => {
     let queryString = `SELECT * FROM reviews INNER JOIN users 
                        ON reviews.UserKey = users.id
-                       WHERE reviews.Businesskey = ${businessId}`;
+                       INNER JOIN businesses ON reviews.Businesskey = businesses.id
+                       WHERE reviews.Businesskey = ${businessId}
+                       `;
     connection.query(queryString, (err, result) => {
         if (err) {
             callback(err, null);

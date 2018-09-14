@@ -37,13 +37,13 @@ class User extends React.Component {
                         <div className='voter-statement'>blahdiblahblahboop</div>
                         <div className='button-wrapper'>
                             <button className='button'>
-                                <img class='button-image' src={buttonUseful} />Useful</button>
+                                <img className='button-image' src={buttonUseful} />Useful</button>
                             <button className='button'>
-                                <img class='button-image' src={buttonFunny} />Funny</button>
+                                <img className='button-image' src={buttonFunny} />Funny</button>
                             <button className='button'>
-                                <img class='button-image' src={buttonCool} />Cool</button>
+                                <img className='button-image' src={buttonCool} />Cool</button>
                             <button className='flag-button'>
-                                <img class='flag-image' src={buttonFlag} /></button>
+                                <img className='flag-image' src={buttonFlag} /></button>
                         </div>    
                     </div>
                 </div>

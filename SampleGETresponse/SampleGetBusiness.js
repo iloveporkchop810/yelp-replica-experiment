@@ -10,13 +10,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 392,
         "id": 392,
-        "Name": "Annabel Klein",
+        "UserName": "Annabel Klein",
         "Location": "Mitchellland, GA",
         "FriendsCount": 39,
         "ReviewsCount": 291,
         "PhotosCount": 34,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/vijaykarthik/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 3,
@@ -29,13 +30,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 153,
         "id": 153,
-        "Name": "Jordi Kautzer",
+        "UserName": "Jordi Kautzer",
         "Location": "New Skye, WA",
         "FriendsCount": 845,
         "ReviewsCount": 234,
         "PhotosCount": 41,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/chadami/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 3,
@@ -48,13 +50,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 195,
         "id": 195,
-        "Name": "Furman Turner",
+        "UserName": "Furman Turner",
         "Location": "Port Bernadetteville, UT",
         "FriendsCount": 813,
         "ReviewsCount": 76,
         "PhotosCount": 36,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/xravil/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 1,
@@ -67,13 +70,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 171,
         "id": 171,
-        "Name": "Shea Willms",
+        "UserName": "Shea Willms",
         "Location": "Madiebury, ME",
         "FriendsCount": 12,
         "ReviewsCount": 203,
         "PhotosCount": 19,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/_victa/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 5,
@@ -86,13 +90,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 230,
         "id": 230,
-        "Name": "Amelia Ernser",
+        "UserName": "Amelia Ernser",
         "Location": "South Lessieville, RI",
         "FriendsCount": 86,
         "ReviewsCount": 245,
         "PhotosCount": 14,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/coreyginnivan/128.jpg",
-        "Status": "Elite '18"
+        "Status": "Elite '18",
+        "BizName": "West Group"
     },
     {
         "StarRating": 5,
@@ -105,13 +110,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 1,
         "id": 1,
-        "Name": "Bradley Moen",
+        "UserName": "Bradley Moen",
         "Location": "North Aliyahmouth, MD",
         "FriendsCount": 905,
         "ReviewsCount": 245,
         "PhotosCount": 26,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/mastermindesign/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 1,
@@ -124,13 +130,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 206,
         "id": 206,
-        "Name": "Gina Bahringer",
+        "UserName": "Gina Bahringer",
         "Location": "Kochville, ID",
         "FriendsCount": 353,
         "ReviewsCount": 221,
         "PhotosCount": 48,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/artem_kostenko/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 5,
@@ -143,13 +150,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 101,
         "id": 101,
-        "Name": "Kale Medhurst IV",
+        "UserName": "Kale Medhurst IV",
         "Location": "Columbusfurt, CT",
         "FriendsCount": 914,
         "ReviewsCount": 183,
         "PhotosCount": 13,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/aleclarsoniv/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     },
     {
         "StarRating": 1,
@@ -162,13 +170,14 @@ const BusinessSample = [
         "Businesskey": 3,
         "UserKey": 112,
         "id": 112,
-        "Name": "Sierra Davis",
+        "UserName": "Sierra Davis",
         "Location": "Gleichnershire, FL",
         "FriendsCount": 223,
         "ReviewsCount": 146,
         "PhotosCount": 48,
         "PhotoLink": "https://s3.amazonaws.com/uifaces/faces/twitter/colgruv/128.jpg",
-        "Status": "null"
+        "Status": "null",
+        "BizName": "West Group"
     }
     
 ]

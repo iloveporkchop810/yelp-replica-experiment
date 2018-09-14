@@ -12,34 +12,34 @@ const Passport = ({user, photo}) => {
             </div>
             <div className='info'>
                 <div>
-                    <ul className="no-bullet">
-                        <li className='user-name'>
-                            <a className='user-name-link' href=''>{user.Name}</a>
-                        </li>
-                        <li className='location'>
-                            <b>{user.Location}</b>
-                        </li>
-                    </ul>
+                    <div className="no-bullet">
+                        <div className='user-name'>
+                            <a className='user-name-link' href=''>{user.UserName}</a>
+                        </div>
+                        <div className='location'>
+                            {user.Location}
+                        </div>
+                    </div>
                     <div className="no-bullet">
                         <div className='friends-count letters'>
                                 <img className='icon' src={zelpFriends}/>       
-                                <b>{user.FriendsCount}</b>
+                                <div className='num'>{user.FriendsCount}</div>
                                 friends
                         </div>
                         <div className='reviews-count letters'>
                                 <img className='icon' src={zelpReviews}/>  
-                                <b>{user.ReviewsCount}</b>
+                                <div className='num'>{user.ReviewsCount}</div>
                                 reviews
                         </div>
                         {user.PhotosCount !== 0 && 
                             <div className='photo-count letters'>
                                 <img className='icon' src={zelpPhotos}/>  
-                                <b>{user.PhotosCount}</b>
+                                <div className='num'>{user.PhotosCount}</div>
                                 photos
                             </div>}
                         {user.Status !== 'null' && 
                             <div className='status'>
-                                <b>{user.Status}</b>
+                                {user.Status}
                             </div>}
                     
                     </div>
