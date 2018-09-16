@@ -5,6 +5,7 @@ import Star from './Star.jsx';
 import './MainUser.css';
 
 
+
 const MainUser = ({user, business}) => {
     return (
         <div className='main-user'>

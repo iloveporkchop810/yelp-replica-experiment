@@ -15,10 +15,13 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    /* padding: 15px 2px; */
 }
 .star-image {
     padding-top: 4px;
     width: 21px;
     position: absolute;
+}
+
+.mustard {
+    background: pink
 }
