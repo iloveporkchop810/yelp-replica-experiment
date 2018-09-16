@@ -4,7 +4,7 @@ import axios from 'axios';
 import Search from './Component/Search.jsx';
 import MainUser from './Component/MainUser.jsx';
 import User from './Component/User.jsx';
-import SampleBiz from '../SampleGETresponse/SampleGetBusiness.js';
+// import SampleBiz from '../SampleGETresponse/SampleGetBusiness.js';  //Sample data
 import MainPerson from '../SampleGETresponse/LoggedInUser.js';
 import './App.css';
 
@@ -13,11 +13,12 @@ class App extends React.Component {
         super(props);
         this.state = {
             mainUser: MainPerson,
-            userReviews: SampleBiz,
+            // userReviews: SampleBiz,
+            userReviews: [],
             businessName: ''
         }
     }
-    componentDidMount() {
+    componentWillMount() {
         this.searchBusiness();
     }
 

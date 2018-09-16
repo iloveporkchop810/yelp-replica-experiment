@@ -17,9 +17,11 @@ class DropDown extends React.Component {
         this.state = {
             dropDownSelect: 'Yelp Sort',
             dropDownLanguag: 'Engrish',
+            isFilter: false,
             showMenu: false
         };
         this.closeMenu = this.closeMenu.bind(this);
+        this.state.isFilter = (this.props.sort === 'sort') ? false: true;
     }    
     showMenu() {    
         this.setState({
@@ -39,13 +41,14 @@ class DropDown extends React.Component {
         this.props.selection(sortingKey[val] || val);
     }
 
-    render() {
+    render() {   
         return (
             <div className='drop-down'>
-                <div>
+                {/* <div className={this.state.isFilter ? 'redline' : ''}> */}
+                <div className='redline'>
                 <span onClick={this.showMenu.bind(this)}>
-                    {(this.props.sort === 'sort') ? "Sort by " : "Language "}
-                    <strong>{(this.props.sort === 'sort') ? this.state.dropDownSelect : this.state.dropDownLanguag}</strong>
+                    {this.state.isFilter ? "Language " : "Sort by "}
+                    <strong>{this.state.isFilter ? this.state.dropDownLanguag : this.state.dropDownSelect }</strong>
                     <img className='span-button'src={buttonSpan}/></span>
                 </div>
                 {this.state.showMenu &&

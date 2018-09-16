@@ -1,13 +1,15 @@
-.main-user {
-    margin: 0;
+.other-user {
     padding: 18px 0;
     border-bottom: 1px solid #e6e6e6;
-    padding-bottom: 17px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas: "user review";
 }
 
 .review-parts {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
 .review-body {
     margin-bottom: 12px;
     font-size: 14px;
@@ -21,30 +23,64 @@
     white-space: nowrap;
     margin-bottom: 6px;
 }
-
-.button-wrapper {
-    display: flex;
-    align-items: center;
-    border-image-repeat: stretch;
-    
+.green{
+    white-space: nowrap;
+    margin-bottom: 6px;
+    color: #41a700;
 }
 
+.button-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "x x x y"
+}
+.blue {
+    border-radius: 8%;
+    height: 30px;
+    width: 94px;
+    padding: 5px 8px;
+    font-size: 12px;
+    line-height: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-shadow: rgba(0,0,0,0.2) 0 -1px;
+    border-color: #007abe;
+    background: #0097ec;
+}
 .button {
-    background-color: white;
     border-radius: 8%;
     box-shadow: 2ch;
     height: 30px;
-    width: 80px;
+    width: 94px;
     padding: 5px 8px;
-    font-weight: bold;
-    color: #666;
     font-size: 12px;
     line-height: 1.5em;
+    font-weight: bold;
+    border-color: #ccc;
+    color: #666;
+    background-color: #f7f7f7;
+    background: linear-gradient(#fff, #f7f7f7);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.button:hover {
+    background: white;
+}
+
+.x {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.number {
+    font-weight: normal;
+    padding-left: 5px;
 }
 
 .button-image {
     width: 15px;
-    height: auto;
+    height: 15px;
+    padding-right: 6px;
 }
 
 .flag-image {
@@ -53,8 +89,12 @@
 }
 
 .flag-button {
-    justify-self: right;
-    text-align: right;
+    width: 35px;
+    border-radius: 5%;
+    background-color: white;
+}
+.flag-button:hover {
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(238, 238, 238));
 }
 
 .holder {

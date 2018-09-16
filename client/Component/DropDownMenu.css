@@ -25,4 +25,8 @@
     padding: 7px 0px;
     border: 1px;
 }
-
+/* 
+.redline:hover {
+    border-bottom: red;
+    border-bottom-width: 3px;
+} */

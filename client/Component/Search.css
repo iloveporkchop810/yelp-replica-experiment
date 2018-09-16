@@ -83,3 +83,8 @@ b {
 .filter-dropdown {
     grid-area: filter;
 }
+
+.filter-dropdown:hover {
+    border-bottom: red;
+    border-bottom-width: 3px;
+}
