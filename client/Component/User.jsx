@@ -2,10 +2,10 @@ import React from 'react';
 import Passport from './Passport.jsx';
 import Hover from './Hover.jsx';
 import './User.css';
-import buttonCool from './buttonCool.png';
-import buttonFunny from './buttonFunny.png';
-import buttonUseful from './buttonUseful.png';
-import buttonFlag from './buttonFlag.png';
+import buttonCool from './images/buttonCool.png';
+import buttonFunny from './images/buttonFunny.png';
+import buttonUseful from './images/buttonUseful.png';
+import buttonFlag from './images/buttonFlag.png';
 
 
 class User extends React.Component {
@@ -24,7 +24,6 @@ class User extends React.Component {
                         <div className='HOLDER'>
                             {this.state.hover && <Hover />}
                         </div>
-                        
                     </div>
                 </div>
                 <div className='review-parts'>
@@ -34,7 +33,7 @@ class User extends React.Component {
                     </div>
                     <div className='review-body'>{this.props.user.ReviewBody}</div>
                     <div className='bottom-bar'>
-                        <div className='voter-statement'>blahdiblahblahboop</div>
+                        <div className='voter-statement'>blahdiblahblah boop</div>
                         <div className='button-wrapper'>
                             <button className='button'>
                                 <img className='button-image' src={buttonUseful} />Useful</button>

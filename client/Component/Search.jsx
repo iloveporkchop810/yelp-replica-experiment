@@ -1,23 +1,19 @@
 import React from 'react';
 import './Search.css'
-import buttonSearch from './buttonSearch.png';
+import buttonSearch from './images/buttonSearch.png';
 import DropDown from './DropDownMenu.jsx';
 
+const sortItems = ['Yelp Sort', 'Newest First', 'Oldest First', 'Highest Rated', 'Lowest Rated', 'Elites']
+const filterItems = ['Engrish', 'Espana', 'Italiano', 'ChingChong']
 
 class Search extends React.Component {
     constructor (props) {
         super (props);
         this.state = {
-            dropDownSelect: 'Yelp Sort'
+            // dropDownSelect: 'Yelp Sort'
         }
     }
    
-    dropDownSelection (e) {
-        this.setState = {
-            searchBar: '',
-            dropDownSelect: e.target.value
-        }
-    }
     render () {
 
         return (
@@ -41,15 +37,15 @@ class Search extends React.Component {
                         </form>
                     </div>
                     <div className='sort-dropdown'>
-                        <DropDown />
+                        <DropDown sort='sort' sortBy={sortItems} selection={this.props.sortSelection}/>
                     </div>
-                    <div className='filter-dropdown'></div>
+                    <div className='filter-dropdown'>
+                        <DropDown sort='language' sortBy={filterItems} selection={this.props.filterSelection}/>
+                    </div>
                 </div>
             </div>
         )
     }
 }
-
-//pass down sort function and filter function
 
 export default Search;

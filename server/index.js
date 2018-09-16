@@ -23,7 +23,6 @@ app.get('/business/:id/reviews', (req, res) => {
 
 //could probabaly learn more about paths and urls...will put on list of todos
 app.get('/business/:id/reviews_sort/:method', (req, res) => {
-    //NOTE TO SELF for client side: ASC is old to new top down, DESC opposite
     var businessIdParam = [req.params.id, req.params.method.split('_').join(' ')];
     db.reviewsSorting(businessIdParam, (err, result) => {
         if (err) {

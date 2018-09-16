@@ -1,20 +1,20 @@
 import React from 'react';
 import './Passport.css';
-import zelpFriends from './zelpFriends.png';
-import zelpReviews from './zelpReviews.png';
-import zelpPhotos from './zelpPhotos.png';
+import zelpFriends from './images/zelpFriends.png';
+import zelpReviews from './images/zelpReviews.png';
+import zelpPhotos from './images/zelpPhotos.png';
 
 const Passport = ({user, photo}) => {
     return (
         <div className='user-part'>
             <div className='photo-container'>
-                <img className='photo' src={photo}/>
+                <a href='#'><img className='photo' src={photo}/></a>
             </div>
             <div className='info'>
                 <div>
                     <div className="no-bullet">
                         <div className='user-name'>
-                            <a className='user-name-link' href=''>{user.UserName}</a>
+                            <a className='user-name-link' href='#'>{user.UserName}</a>
                         </div>
                         <div className='location'>
                             {user.Location}
