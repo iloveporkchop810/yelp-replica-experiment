@@ -44,3 +44,33 @@
 .review-link:hover {
     text-decoration-line: underline;
 }
+
+.input-box {
+    background: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 350px;
+    height: 350px;
+    position: absolute;
+}
+
+.review-input {
+    width: 340px;
+    height: 300px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+.submit-input {
+    min-width: 220px;
+    height: 38px;
+    color: #fff;
+    font-weight: bold;
+    border-color: #8d0005;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.3);
+    background-color: #d90007;
+    background: linear-gradient(#d90007,#c91400);
+    font-size: 16px;
+    line-height: 1.3125em;
+}

@@ -33,26 +33,26 @@ class Star extends React.Component {
             this.setState(starObj);
         }
     }
-    renderHoverStars(value) {
-        var starPopulate = [];
-        for(var i = 1; i <= value; i ++) {
-            const starProps = (
-                <div className={'star '+starColorRating[value][0]} value={i} 
-                     onMouseOver={this.hoverStar.bind(this)}
-                     onMouseOut={this.hoverStar.bind(this)}>
-                <img className='star-image' src={whiteStar}/></div>
-            )
-            starPopulate.push(starProps)
-        }
+    // renderHoverStars(value) {
+    //     var starPopulate = [];
+    //     for(var i = 1; i <= value; i ++) {
+    //         const starProps = (
+    //             <div className={'star '+starColorRating[value][0]} value={i} 
+    //                  onMouseOver={this.hoverStar.bind(this)}
+    //                  onMouseOut={this.hoverStar.bind(this)}>
+    //             <img className='star-image' src={whiteStar}/></div>
+    //         )
+    //         starPopulate.push(starProps)
+    //     }
         
-        return starPopulate;
-    }
+    //     return starPopulate;
+    // }
 
     render () {
         if(this.state.hover) {
             return (
                 <div className='star-bar'>
-                    {this.renderHoverStars(this.state.hoverValue)}
+                    {/* {this.renderHoverStars(this.state.hoverValue)} */}
                 </div>
             )
         } else {
@@ -76,9 +76,4 @@ class Star extends React.Component {
 export default Star;
 
 // {this.state.hover ? <span>{starColorRating[this.state.hoverValue][1]}</span> : null}
-// <label>1 (Eek! Methinks not.)</label>
-// <label>2 (Meh. I've experienced better.)</label>
-// <label>3 (A-Ok.)</label>
-// <label>4 (Yay! I'm a fan.)</label>
-// <label>5 (Woohoo! As good as it gets!)</label>
 
