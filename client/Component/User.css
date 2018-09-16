@@ -20,9 +20,8 @@
 .voter-statement {
     white-space: nowrap;
     margin-bottom: 6px;
-    
-   
 }
+
 .button-wrapper {
     display: flex;
     align-items: center;
@@ -56,4 +55,10 @@
 .flag-button {
     justify-self: right;
     text-align: right;
+}
+
+.holder {
+    width: 217.125px;
+    height: 125px;
+    transition: opacity 0.3s ease-in-out;
 }

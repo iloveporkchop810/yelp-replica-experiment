@@ -43,8 +43,9 @@ class DropDown extends React.Component {
         return (
             <div className='drop-down'>
                 <div>
-                {(this.props.sort === 'sort') ? "Sort by " : "Language "} 
-                <span onClick={this.showMenu.bind(this)}><strong>{(this.props.sort === 'sort') ? this.state.dropDownSelect : this.state.dropDownLanguag}</strong>
+                <span onClick={this.showMenu.bind(this)}>
+                    {(this.props.sort === 'sort') ? "Sort by " : "Language "}
+                    <strong>{(this.props.sort === 'sort') ? this.state.dropDownSelect : this.state.dropDownLanguag}</strong>
                     <img className='span-button'src={buttonSpan}/></span>
                 </div>
                 {this.state.showMenu &&

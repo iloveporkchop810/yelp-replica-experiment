@@ -17,18 +17,20 @@ class User extends React.Component {
     }
     render () {
         return (
-            <div className='main-user'>
+            <div className='main-user'
+                 onMouseOver={() => this.setState({hover: true})}
+                 onMouseOut={() => this.setState({hover: false})} >
                 <div className='user-section'>
                     <div className='user-parts'>
                         <Passport user={this.props.user} photo={this.props.user.PhotoLink}/>
-                        <div className='HOLDER'>
-                            {this.state.hover && <Hover />}
-                        </div>
+                        {/* <div className='holder'> */}
+                            {this.state.hover && <Hover user={this.props.user.UserName}/>}
+                        {/* </div> */}
                     </div>
                 </div>
                 <div className='review-parts'>
                     <div className='star-bar'>
-                        <div className='stars'></div>
+                        <div className='star-rating'></div>
                         <div className='date'></div>
                     </div>
                     <div className='review-body'>{this.props.user.ReviewBody}</div>

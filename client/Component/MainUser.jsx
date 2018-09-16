@@ -3,7 +3,7 @@ import SophiaPic from '../../SampleGETresponse/SophiaSample.jpg';
 import Passport from './Passport.jsx';
 import './MainUser.css';
 
-const MainUser = ({user}) => {
+const MainUser = ({user, business}) => {
     return (
         <div className='main-user'>
             <div className='user-parts'>
@@ -15,7 +15,9 @@ const MainUser = ({user}) => {
                         {/* <input class="star-selector_input js-star-selector_input" id="rating-5" name="rating" type="radio" value="5"></input>
                         <label class="star-selector_label" for="rating-5">5 (Woohoo! As good as it gets!)</label> */}
                     </div>
-                    <div className='review-link'></div>
+                    <div>
+                    <a className='review-link' href='#'>Start your review of <strong>{business}</strong></a> 
+                    </div>
                 </div>
             </div>
         </div>

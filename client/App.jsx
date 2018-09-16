@@ -65,7 +65,7 @@ class App extends React.Component {
                 <Search business={this.state.businessName} 
                         sortSelection={this.sortSelection.bind(this)}
                         filterSelection={this.filterSelection.bind(this)}/>
-                <MainUser user={this.state.mainUser}/>
+                <MainUser user={this.state.mainUser} business={this.state.businessName} />
                 {this.state.userReviews.map(user => <User user={user} />)}
             </div>
         )
