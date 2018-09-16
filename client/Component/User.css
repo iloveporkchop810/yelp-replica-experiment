@@ -102,3 +102,9 @@
     height: 125px;
     transition: opacity 0.3s ease-in-out;
 }
+
+.date {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+}

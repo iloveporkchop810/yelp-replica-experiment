@@ -41,8 +41,13 @@ class User extends React.Component {
         this.setState(voteObj);
     }
 
-    //I must apologize to who ever is reading this ugly code. I HATE CSS... 
+    //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
     render () {
+        var dateTime = this.props.user.DateTime;
+        var date = dateTime.split('T');
+        var dateParse = date[0].split('-');
+        var dateParseFinal = dateParse[1] + '/' + dateParse[2] + '/' + dateParse[0];
+
         return (
             <div className='other-user'
                  onMouseOver={() => this.setState({hover: true})}
@@ -58,7 +63,7 @@ class User extends React.Component {
                 <div className='review-parts'>
                     <div className='star-bar'>
                         <div className='star-rating'></div>
-                        <div className='date'></div>
+                        <div className='date'>{dateParseFinal}</div>
                     </div>
                     <div className='review-body'>{this.props.user.ReviewBody}</div>
                     <div className='bottom-bar'>
