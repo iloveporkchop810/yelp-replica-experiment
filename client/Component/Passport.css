@@ -1,0 +1,71 @@
+.user-part {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "pics info";
+}
+.photo-container {
+    grid-area: pics;
+    padding-right: 10px;
+}
+
+.photo {
+    width: 60px;
+    height: auto;
+    border-radius: 6%; 
+}
+
+.info {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    grid-area: info;
+}
+
+.no-bullet {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    padding-bottom: 5px;
+}
+
+.location {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 4px;
+}
+
+.user-name-link {
+    color: #0073bb;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: bold;
+}
+
+.icon {
+    width: 18px;
+    height: 15px;
+    padding-right: 4px;
+}
+
+.letters {
+    font-size: 12px;
+    /* font-weight: bold; */
+    color: #666;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-bottom: 2px;
+}
+
+.status {
+    color: #f15c00;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.num {
+    font-weight: bold;
+    padding-right: 4px;
+}

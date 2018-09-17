@@ -1,0 +1,32 @@
+.hover-box {
+    width: 187px;
+    height: 25px;
+}
+.hover-item {
+    width: 187px;
+    height: 18px;
+    padding: 3px 0;
+    display: flex;
+
+}
+.hover-link {
+    width: 187px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #0073bb;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #e6e6e6;
+    margin-left: 10px;
+    margin-bottom: -2px;
+}
+
+.hover-link:hover {
+    text-decoration: underline;
+}
+
+.hover-icon {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+}

@@ -24,3 +24,8 @@ coverage
 build/
 dist/
 
+# FakeData
+database/seedFiles/businesses.csv
+database/seedFiles/users.csv
+database/seedFiles/reviews.csv
+database/seedFiles/dataGeneratortest.js
