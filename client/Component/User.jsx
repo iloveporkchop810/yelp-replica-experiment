@@ -6,6 +6,13 @@ import buttonCool from './images/buttonCool.png';
 import buttonFunny from './images/buttonFunny.png';
 import buttonUseful from './images/buttonUseful.png';
 import buttonFlag from './images/buttonFlag.png';
+import OneStar from './images/1Star.png';
+import TwoStar from './images/2Star.png';
+import ThreeStar from './images/3Star.png';
+import FourStar from './images/4Star.png';
+import FiveStar from './images/5Star.png';
+import moment from 'moment';
+
 
 
 class User extends React.Component {
@@ -26,27 +33,22 @@ class User extends React.Component {
             defaultSentence: "Thanks for your vote!",
             changeClass: true
         }
- 
+        //dont want to send so many POST request... must find way to do a promise perhaps, 
+        //for the state at refresh?
         if (this.state[butt][0]) {
             voteObj[butt] = [!this.state[butt][0], this.state[butt][1]-1];
         } else {
             voteObj[butt] = [!this.state[butt][0], this.state[butt][1]+1];
-            //send post to update count. but want to wait until certain, as users are allowed to toggle vote
-            // setTimeout(() => {
-            //     if(this.state[butt][0]) {
-
-            //     }
-            // }, 10000)
+            
         }
-        this.setState(voteObj);
+        this.setState(voteObj);   
     }
 
     //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
     render () {
-        var dateTime = this.props.user.DateTime;
-        var date = dateTime.split('T');
-        var dateParse = date[0].split('-');
-        var dateParseFinal = dateParse[1] + '/' + dateParse[2] + '/' + dateParse[0];
+        
+        const stars = [OneStar, TwoStar, ThreeStar, FourStar, FiveStar];
+        let dateParseFinal = moment(this.props.user.DateTime).format('l');
 
         return (
             <div className='other-user'
@@ -60,9 +62,9 @@ class User extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='review-parts'>
+                <div className='user-review-parts'>
                     <div className='star-bar'>
-                        <div className='star-rating'></div>
+                        <img className='star-img' src={stars[this.props.user.StarRating-1]}/>
                         <div className='date'>{dateParseFinal}</div>
                     </div>
                     <div className='review-body'>{this.props.user.ReviewBody}</div>

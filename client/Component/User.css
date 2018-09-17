@@ -6,7 +6,7 @@
     grid-template-areas: "user review";
 }
 
-.review-parts {
+.user-review-parts {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -101,6 +101,16 @@
     width: 217.125px;
     height: 125px;
     transition: opacity 0.3s ease-in-out;
+}
+.star-bar {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.star-img {
+    height: 20px;
+    width: auto;
+    padding-right: 10px;
 }
 
 .date {

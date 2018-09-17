@@ -54,9 +54,11 @@ const reviewsFilter = (businessfilterParam, callback) => {
     })
 }
 
+//might have to double check the query string for Foreign Key look up.
 const postNewReview = (reviewParams, callback) => {
+    console.log(reviewParams);
     let queryString = `INSERT INTO reviews (StarRating, ReviewBody, DateTime, Language, Businesskey, UserKey)
-                       VALUES (?, ?, ?, ?, ?, ?)`;
+                       VALUES (?, ?, ?, ?, ?, (SELECT id FROM users WHERE users.id === UserKey?)`;
     connection.query(queryString, reviewParams, (err, result) => {
         if (err) {
             callback(err, null);
@@ -65,8 +67,21 @@ const postNewReview = (reviewParams, callback) => {
         }
     })
 }
+//might have to double check the query string
+const voteReview = (voteParams, callback) => {
+    let queryString = `UPDATE reviews SET reviews.${voteParam[1]} = reviews.${voteParam[1]} + 1 
+                       WHERE reviews.BusinessKey = ${voteParam[0]} AND reviews.UserKey = ${voteParam[2]}`;
+    connection.query(queryString, (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, result);
+        }
+    })                       
+}
 
 module.exports.businessPageReviewsLoading = businessPageReviewsLoading;
 module.exports.reviewsSorting = reviewsSorting;
 module.exports.reviewsFilter = reviewsFilter;
 module.exports.postNewReview = postNewReview;
+module.exports.voteReview = voteReview;
