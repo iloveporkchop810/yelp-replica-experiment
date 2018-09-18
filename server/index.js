@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
+const cors = require('cors');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
-
+app.use(cors());
 
 // GET business page reviews (initial resaturant page = random, or search by id)
 app.get('/business/:id/reviews', (req, res) => {
