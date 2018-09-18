@@ -17,11 +17,11 @@
     "seed-db": "mysqlimport -u root --local --lines-terminated-by='*' zelp ./database/seedFiles/users.csv ./database/seedFiles/businesses.csv ./database/seedFiles/reviews.csv",
     "db-start": "npm run db-init && npm run seed-files && npm run seed-db",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check"
-
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
