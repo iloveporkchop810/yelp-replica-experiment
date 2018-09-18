@@ -15,7 +15,9 @@
     "db-init": "mysql -u root < ./database/schema.sql",
     "seed-files": "node ./database/seedFiles/dataGenerator.js",
     "seed-db": "mysqlimport -u root --local --lines-terminated-by='*' zelp ./database/seedFiles/users.csv ./database/seedFiles/businesses.csv ./database/seedFiles/reviews.csv",
-    "db-start": "npm run db-init && npm run seed-files && npm run seed-db"
+    "db-start": "npm run db-init && npm run seed-files && npm run seed-db",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check"
+
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -34,11 +36,19 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.23.0",
     "css-loader": "^1.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "image-webpack-loader": "^4.3.1",
     "jest": "^22.3.0",
     "morgan": "^1.9.0",
+    "prettier": "1.14.2",
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",
     "webpack": "^2.2.1"

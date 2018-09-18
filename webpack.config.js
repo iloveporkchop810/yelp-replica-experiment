@@ -1,4 +1,5 @@
 const path = require('path');
+
 const SRC_DIR = path.join(__dirname, '/client');
 const DIST_DIR = path.join(__dirname, '/public');
 
@@ -17,22 +18,22 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'env']
+          presets: ['react', 'env'],
         },
       },
       {
         test: /\.css?$/,
-        loader: [ 'style-loader', 'css-loader' ]
+        loader: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|png)$/,
         use: {
-          loader: "url-loader",
+          loader: 'url-loader',
           options: {
             limit: 25000,
           },
         },
-      }
-    ]
-  }
-}
+      },
+    ],
+  },
+};
