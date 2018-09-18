@@ -12,7 +12,7 @@ class MainUser extends React.Component {
         super(props);
         this.state = {
             showInputBox: false,
-            value: '',
+            textValue: '',
             userStarRate: '',
         }
 
@@ -29,34 +29,46 @@ class MainUser extends React.Component {
 
     changeValue(e) {
         this.setState({
-            value: e.target.value
+            textValue: e.target.value
         })
         console.log(this.state)
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.setState({
-            showInputBox: false
-        })
-        var timeStamp = new Date().toLocaleString()
-        var timeStampParse = timeStamp.split(' ');
-        var timeShuffle = timeStampParse[0].split('/');
-        var timeRejoin = [timeShuffle[2].slice(0,4),timeShuffle[0],timeShuffle[1]].join('-');
-        var objTime = [timeRejoin, timeStampParse[1]].join(' ');
-
-        this.props.postReview({ 
-            // StarRating: this.state.userStarRate,
-            // ReviewBody: 'Oh Hi Mark',
-           
-            StarRating: 2,
-            ReviewBody: this.state.value,
-            DateTime: objTime,
-            Language: 'Engrish',
-            PhotoLink: SophiaPic
-         })
+    grabStarValue(e) {
+        if (e.target.attributes.value.value) {
+            this.setState({
+                userStarRate: e.target.attributes.value.value
+            })
+        }
     }
-    
+
+    handleSubmit(e) {
+        //call back for the star value
+        // let starValue = grabStarValue(callback) 
+        e.preventDefault();
+        if (!this.state.userStarRate) {
+            alert('Please leave a star rating!')
+        } else {
+            this.setState({
+                showInputBox: false
+            })
+            
+            var timeStamp = new Date().toLocaleString()
+            var timeStampParse = timeStamp.split(' ');
+            var timeShuffle = timeStampParse[0].split('/');
+            var timeRejoin = [timeShuffle[2].slice(0,4),timeShuffle[0],timeShuffle[1]].join('-');
+            var objTime = [timeRejoin, timeStampParse[1]].join(' ');
+
+            this.props.postReview({ 
+                StarRating: this.state.userStarRate,
+                ReviewBody: this.state.textValue,
+                DateTime: objTime,
+                Language: 'Engrish',
+                //the photoLink is unneccessary, only use because dummy data. 
+                PhotoLink: SophiaPic
+            })
+        }
+    }
     
 
     render() {
@@ -77,7 +89,7 @@ class MainUser extends React.Component {
                 <div className='review-parts'>
                     <div className='greybox'>
                         <div className='stars-user-review'>
-                            <Star />
+                            <Star grabStarValue={this.grabStarValue.bind(this)}/>
                         </div>
                         <div>
                         <span className='review-link' href='#'

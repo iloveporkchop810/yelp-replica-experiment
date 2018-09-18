@@ -6,6 +6,7 @@ import buttonCool from './images/buttonCool.png';
 import buttonFunny from './images/buttonFunny.png';
 import buttonUseful from './images/buttonUseful.png';
 import buttonFlag from './images/buttonFlag.png';
+import buttonTrash from './images/buttonTrash.png'; 
 import OneStar from './images/1Star.png';
 import TwoStar from './images/2Star.png';
 import ThreeStar from './images/3Star.png';
@@ -53,12 +54,13 @@ class User extends React.Component {
         return (
             <div className='other-user'
                  onMouseOver={() => this.setState({hover: true})}
-                 onMouseOut={() => this.setState({hover: false})} >
+                 onMouseLeave={() => this.setState({hover: false})} >
                 <div className='user-section'>
                     <div className='user-parts'>
                         <Passport user={this.props.user} photo={this.props.user.PhotoLink}/>
                         <div className='holder'>
-                            {this.state.hover && <Hover user={this.props.user.UserName}/>}
+                            {this.state.hover && <Hover user={this.props.user.UserName}
+                                                        isMain={this.props.isMain}/>}
                         </div>
                     </div>
                 </div>
@@ -68,6 +70,7 @@ class User extends React.Component {
                         <div className='date'>{dateParseFinal}</div>
                     </div>
                     <div className='review-body'>{this.props.user.ReviewBody}</div>
+                    {!this.props.isMain ? (
                     <div className='bottom-bar'>
                         <div className={this.state.changeClass? 'green':'voter-statement'} >{this.state.defaultSentence}</div>
                         <div className='button-wrapper'>
@@ -88,7 +91,13 @@ class User extends React.Component {
                             <button className='flag-button'>
                                 <img className='flag-image' src={buttonFlag} /></button>
                         </div>    
-                    </div>
+                    </div>) :
+                    <div className='bottom-bar'>
+                        <div className='button-wrapper'>
+                            <button className='flag-button'>
+                                <img className='flag-image' src={buttonTrash} /></button>
+                        </div>
+                    </div>}
                 </div>
             </div>
         )

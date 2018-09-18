@@ -100,7 +100,8 @@ class App extends React.Component {
                         filterSelection={this.filterSelection.bind(this)}/>
                 {this.state.reviewPosted ?
                     <User user={this.state.mainUser} 
-                          reviewBody={this.state.reviewPosted}/>
+                          reviewBody={this.state.reviewPosted}
+                          isMain={true}/>
                     : <MainUser user={this.state.mainUser} 
                                 business={this.state.businessName} 
                                 postReview={this.postReview.bind(this)}/>}

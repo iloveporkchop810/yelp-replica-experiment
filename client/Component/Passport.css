@@ -39,8 +39,11 @@
     color: #0073bb;
     text-decoration: none;
     font-size: 14px;
-    line-height: 1.28571em;
+
     font-weight: bold;
+}
+.user-name-link:hover {
+    text-decoration: underline;
 }
 
 .icon {

@@ -9,7 +9,9 @@
 .user-review-parts {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
+/* .user-section * {
+    pointer-events: none;
+} */
 .review-body {
     margin-bottom: 12px;
     font-size: 14px;
