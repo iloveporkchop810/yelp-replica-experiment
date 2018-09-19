@@ -2,19 +2,17 @@ import React from 'react';
 import Passport from './Passport.jsx';
 import Hover from './Hover.jsx';
 import './User.css';
-import buttonCool from './images/buttonCool.png';
-import buttonFunny from './images/buttonFunny.png';
-import buttonUseful from './images/buttonUseful.png';
-import buttonFlag from './images/buttonFlag.png';
-import buttonTrash from './images/buttonTrash.png';
-import OneStar from './images/1Star.png';
-import TwoStar from './images/2Star.png';
-import ThreeStar from './images/3Star.png';
-import FourStar from './images/4Star.png';
-import FiveStar from './images/5Star.png';
+import buttonCool from './images/UserComponentImages/buttonCool.png';
+import buttonFunny from './images/UserComponentImages/buttonFunny.png';
+import buttonUseful from './images/UserComponentImages/buttonUseful.png';
+import buttonFlag from './images/UserComponentImages/buttonFlag.png';
+import buttonTrash from './images/UserComponentImages/buttonTrash.png';
+import OneStar from './images/UserComponentImages/1Star.png';
+import TwoStar from './images/UserComponentImages/2Star.png';
+import ThreeStar from './images/UserComponentImages/3Star.png';
+import FourStar from './images/UserComponentImages/4Star.png';
+import FiveStar from './images/UserComponentImages/5Star.png';
 import moment from 'moment';
-
-
 
 class User extends React.Component {
   constructor(props) {
@@ -35,15 +33,17 @@ class User extends React.Component {
       defaultSentence: "Thanks for your vote!",
       changeClass: true
     }
-    //dont want to send so many POST request... must find way to do a promise perhaps, 
-    //for the state at refresh?
+    //dont want to send so many POST requests (as user toggle the vote buttons)... 
+    //must find way to do a promise perhaps, for the state at refresh?
+    //find a way to collect all the votes and send all at once at some point?
     if (this.state[butt][0]) {
       voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
     } else {
       voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
-
+      //axios.post(`/businesses/${this.props.user.Businesskey}/reviews/${this.props.user.id}/${this.state[butt]}`
     }
     this.setState(voteObj);
+    
   }
 
   //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
@@ -87,7 +87,8 @@ class User extends React.Component {
                                 <div className='number'>{this.state.funnyButton[1] > 0 ? 
                                                          this.state.funnyButton[1] : null}</div></span>
                 </button>
-                <button className={this.state.coolButton[0] ? 'blue' : 'button'} onClick={() => this.voteButton('coolButton')}>
+                <button className={this.state.coolButton[0] ? 'blue' : 'button'} 
+                        onClick={() => this.voteButton('coolButton')}>
                   <span className='x'><img className='button-image' src={buttonCool} />Cool
                                 <div className='number'>{this.state.coolButton[1] > 0 ? 
                                                          this.state.coolButton[1] : null}</div></span>

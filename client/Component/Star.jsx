@@ -7,23 +7,26 @@ class Star extends React.Component {
     super(props);
     this.state = {
       hover: false,
-      hoverValue: ''
+      hoverValue: '',
+      click: false
     }
-    console.log(this.state)
   }
 
   hoverStar(e) {
     if (e.target.attributes.value.value) {
       var starValue = e.target.attributes.value.value;
-
-      var starObj = {
-        hover: !this.state.hover,
+      this.setState({
+        hover: true,
         hoverValue: starValue,
         click: false
-      }
-      this.setState(starObj);
-      console.log(this.state)
+      });
     }
+  }
+
+  hoverOut() {
+    this.setState({
+      hover: false
+    })
   }
 
   render() {
@@ -41,13 +44,13 @@ class Star extends React.Component {
     return (
       <div className='review-star-bar'>
         {rating.map((each, i) => (
-          <div className='star-and-banner'>
+          <div className='star-and-banner' key={i}>
             <div value={each}
-              onMouseOver={this.state.click ? null : this.hoverStar.bind(this)}
-              onMouseOut={this.state.click ? null : this.hoverStar.bind(this)}
-              onClick={(e) => {
-                this.props.grabStarValue(e)
-                this.setState({ click: !this.state.click })
+                 onMouseOver={this.hoverStar.bind(this)} 
+                 onMouseOut={this.state.click ? null : this.hoverOut.bind(this)}
+                 onClick={(e) => {
+                 this.setState({ click: true })
+                 this.props.grabStarValue(e)
               }}>
               <div value={each}
                    className={each <= this.state.hoverValue ? starClass : 'star'}>
