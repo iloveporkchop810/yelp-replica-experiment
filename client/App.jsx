@@ -24,9 +24,9 @@ class App extends React.Component {
 
 //window.location.pathname = /business/:id/ ----> for the proxy server
   searchBusiness(name) {
-    name = name || (Math.floor(Math.random() * 100));
-    axios.get(`/businesses/${name}/reviews`)
-    // axios.get(`/api${window.location.pathname}reviews`) //----> for proxy server
+    // name = name || (Math.floor(Math.random() * 100));
+    // axios.get(`/businesses/${name}/reviews`)
+    axios.get(`/api${window.location.pathname}reviews`) //----> for proxy server
       .then(response => {
         this.setState({
           userReviews: response.data,
@@ -39,8 +39,8 @@ class App extends React.Component {
   }
 
   sortSelection(value) {
-    axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_sort/${value}`)
-    // axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`) //----> for proxy server
+    // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_sort/${value}`)
+    axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`) //----> for proxy server
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -52,8 +52,8 @@ class App extends React.Component {
   }
 
   filterSelection(value) {
-    axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_filter/${value}`)
-    // axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) //----> for proxy server
+    // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_filter/${value}`)
+    axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) //----> for proxy server
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -88,8 +88,8 @@ class App extends React.Component {
     //will have to set up where when 'log in' add to users table
 
 ///business/${this.state.userReviews[0].Businesskey}
-    axios.post(`/businesses/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
-    // axios.post(`/api${window.location.pathname}reviews`, postObj) //----> for proxy server
+    // axios.post(`/businesses/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
+    axios.post(`/api${window.location.pathname}reviews`, postObj) //----> for proxy server
       .then(response => {
         console.log('Review Successfully Posted')
       })
