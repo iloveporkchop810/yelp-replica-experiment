@@ -15,7 +15,7 @@ class MainUser extends React.Component {
       textValue: '',
       userStarRate: ''
     };
-
+  
     this.changeValue = this.changeValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,7 +31,6 @@ class MainUser extends React.Component {
     this.setState({
       textValue: e.target.value
     });
-    console.log(this.state)
   }
 
   grabStarValue(e) {
@@ -39,6 +38,7 @@ class MainUser extends React.Component {
       this.setState({
         userStarRate: e.target.attributes.value.value
       });
+      setTimeout(()=>console.log(this.state.userStarRate), 1000)
     };
   }
 
@@ -61,7 +61,7 @@ class MainUser extends React.Component {
         StarRating: this.state.userStarRate,
         ReviewBody: this.state.textValue,
         DateTime: objTime,
-        Language: 'Engrish',
+        Language: 'English',
         //the photoLink is unneccessary, only use because dummy data. 
         PhotoLink: SophiaPic
       });
@@ -96,9 +96,7 @@ class MainUser extends React.Component {
               <span className='review-link' href='#'
                     onClick={() => this.showInputBox()}>Start your review of <strong>{this.props.business}</strong></span>
             </div>
-
             {this.state.showInputBox ? inputField : null}
-
           </div>
         </div>
       </div>

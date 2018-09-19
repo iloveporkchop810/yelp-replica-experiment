@@ -22,9 +22,6 @@ const businessPageReviewsLoading = (businessId, callback) => {
     }
   });
 };
-// Realized could just sort what I already have back from the business ^,
-// that way wont have to redo a GET request?? WHAT IS BETTER??? Actually,
-// new GET probably better, that way always up to date on new reviews being inserted.
 
 const reviewsSorting = (businessSortParam, callback) => {
   const queryString = `SELECT * FROM reviews INNER JOIN users 
@@ -69,8 +66,8 @@ const postNewReview = (reviewParams, callback) => {
 };
 // might have to double check the query string
 const voteReview = (voteParams, callback) => {
-  const queryString = `UPDATE reviews SET reviews.${voteParam[1]} = reviews.${voteParam[1]} + 1 
-                       WHERE reviews.BusinessKey = ${voteParam[0]} AND reviews.UserKey = ${voteParam[2]}`;
+  const queryString = `UPDATE reviews SET reviews.${voteParams[1]} = reviews.${voteParam[1]} + 1 
+                       WHERE reviews.BusinessKey = ${voteParams[0]} AND reviews.UserKey = ${voteParam[2]}`;
   connection.query(queryString, (err, result) => {
     if (err) {
       callback(err, null);

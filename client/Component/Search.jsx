@@ -5,7 +5,7 @@ import DropDown from './DropDownMenu.jsx';
 
 const sortItems = ['Yelp Sort', 'Newest First', 'Oldest First', 
                    'Highest Rated', 'Lowest Rated', 'Elites'];
-const filterItems = ['Engrish', 'Espana', 'Italiano', 'ChingChong'];
+const filterItems = ['English', 'Spanish', 'Italian', 'Chinese'];
 
 const Search = (props) => {
   return (

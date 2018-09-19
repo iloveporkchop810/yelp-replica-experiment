@@ -1,8 +1,8 @@
 import React from 'react';
 import './Passport.css';
-import zelpFriends from './images/zelpFriends.png';
-import zelpReviews from './images/zelpReviews.png';
-import zelpPhotos from './images/zelpPhotos.png';
+import zelpFriends from './images/PassportComponentImages/zelpFriends.png';
+import zelpReviews from './images/PassportComponentImages/zelpReviews.png';
+import zelpPhotos from './images/PassportComponentImages/zelpPhotos.png';
 
 const Passport = ({ user, photo }) => {
   return (

@@ -16,7 +16,7 @@ class DropDown extends React.Component {
     super(props);
     this.state = {
       dropDownSelect: 'Yelp Sort',
-      dropDownLanguag: 'Engrish',
+      dropDownLanguag: 'English',
       isFilter: false,
       showMenu: false
     };
@@ -57,10 +57,11 @@ class DropDown extends React.Component {
           <div className='menu'>
             <div className='menu-inner'
                  onClick={(e) => this.changeSelection(e)}>
-              {this.props.sortBy.map(item => <MenuItem item={item}
-                                                       selectedDefault={(this.props.sort === 'sort') ?
-                                                       this.state.dropDownSelect :
-                                                       this.state.dropDownLanguag} />)}
+              {this.props.sortBy.map((item, i) => <MenuItem item={item}
+                                                            key={i}
+                                                            selectedDefault={(this.props.sort === 'sort') ?
+                                                            this.state.dropDownSelect :
+                                                            this.state.dropDownLanguag} />)}
             </div>
           </div>}
       </div>
