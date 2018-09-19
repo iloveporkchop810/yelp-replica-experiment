@@ -24,10 +24,11 @@ class App extends React.Component {
     this.searchBusiness();
   }
 
+///business/${name}/reviews 
   //will have to change how to serach by name vs id later. for now just a place holder
   searchBusiness(name) {
     name = name || (Math.floor(Math.random() * 100));
-    axios.get(`/business/${name}/reviews`)
+    axios.get(`/api${window.location.pathname}reviews`)
       .then(response => {
         this.setState({
           userReviews: response.data,
@@ -38,8 +39,10 @@ class App extends React.Component {
         console.log('initial startup error')
       })
   }
+
+  //${this.state.userReviews[0].Businesskey}
   sortSelection(value) {
-    axios.get(`/business/${this.state.userReviews[0].Businesskey}/reviews_sort/${value}`)
+    axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`)
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -49,9 +52,9 @@ class App extends React.Component {
         console.log('axios sort error')
       })
   }
-
+//${this.state.userReviews[0].Businesskey}
   filterSelection(value) {
-    axios.get(`/business/${this.state.userReviews[0].Businesskey}/reviews_filter/${value}`)
+    axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`)
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -85,7 +88,10 @@ class App extends React.Component {
     //and can only EDIT at that point. 
     //right now, not posting any reviews, because main user does not exist in db. 
     //will have to set up where when 'log in' add to users table
-    axios.post(`/business/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
+
+///business/${this.state.userReviews[0].Businesskey}
+    
+    axios.post(`/api${window.location.pathname}reviews`, postObj)
       .then(response => {
         console.log('Review Successfully Posted')
       })
