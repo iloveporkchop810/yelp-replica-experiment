@@ -27,7 +27,7 @@ class App extends React.Component {
   //will have to change how to serach by name vs id later. for now just a place holder
   searchBusiness(name) {
     name = name || (Math.floor(Math.random() * 100));
-    axios.get(`http://localhost:8080/business/${name}/reviews`)
+    axios.get(`/business/${name}/reviews`)
       .then(response => {
         this.setState({
           userReviews: response.data,
@@ -39,7 +39,7 @@ class App extends React.Component {
       })
   }
   sortSelection(value) {
-    axios.get(`http://localhost:8080/business/${this.state.userReviews[0].Businesskey}/reviews_sort/${value}`)
+    axios.get(`/business/${this.state.userReviews[0].Businesskey}/reviews_sort/${value}`)
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -51,7 +51,7 @@ class App extends React.Component {
   }
 
   filterSelection(value) {
-    axios.get(`http://localhost:8080/business/${this.state.userReviews[0].Businesskey}/reviews_filter/${value}`)
+    axios.get(`/business/${this.state.userReviews[0].Businesskey}/reviews_filter/${value}`)
       .then(response => {
         this.setState({
           userReviews: response.data
@@ -85,7 +85,7 @@ class App extends React.Component {
     //and can only EDIT at that point. 
     //right now, not posting any reviews, because main user does not exist in db. 
     //will have to set up where when 'log in' add to users table
-    axios.post(`http://localhost:8080/business/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
+    axios.post(`/business/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
       .then(response => {
         console.log('Review Successfully Posted')
       })
