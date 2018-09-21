@@ -24,7 +24,7 @@ class App extends React.Component {
 
 //window.location.pathname = /business/:id/ ----> for the proxy server
   searchBusiness(name) {
-    // name = name || (Math.floor(Math.random() * 100));
+    name = name || (Math.floor(Math.random() * 100));
     // axios.get(`/businesses/${name}/reviews`)
     axios.get(`/api${window.location.pathname}reviews`) //----> for proxy server
       .then(response => {
