@@ -91,12 +91,16 @@
 .flag-image {
     width: 15px;
     height: auto;
+    grid-area: y;
+    justify-content: end;
 }
 
 .flag-button {
+    grid-area: y;
     width: 35px;
     border-radius: 5%;
     background-color: white;
+    justify-content: end;
 }
 .flag-button:hover {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(238, 238, 238));
