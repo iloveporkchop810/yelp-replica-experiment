@@ -3,10 +3,10 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   user: 'root',
   password: '',
-  database: 'zelp',
+  database: 'zelp'
 });
 
-connection.connect();
+// connection.connect();
 
 const businessPageReviewsLoading = (businessId, callback) => {
   const queryString = `SELECT * FROM reviews INNER JOIN users 
