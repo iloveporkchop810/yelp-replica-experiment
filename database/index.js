@@ -1,9 +1,14 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
+  // user: 'hellohello810',
+  // password: 'porkchop3438',
+  // database: 'zelp',
+  // host: 'zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com'
+
   user: 'root',
   password: '',
-  database: 'zelp',
+  database: 'zelp'
 });
 
 connection.connect();
