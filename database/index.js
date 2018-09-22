@@ -4,9 +4,11 @@ const connection = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'zelp'
+  // hostsocket: '/var/run/mysqld/mysqld.sock',
+  // port: '3306'
 });
 
-// connection.connect();
+connection.connect();
 
 const businessPageReviewsLoading = (businessId, callback) => {
   const queryString = `SELECT * FROM reviews INNER JOIN users 
