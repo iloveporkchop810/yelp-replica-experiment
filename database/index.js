@@ -1,11 +1,10 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'zelp'
-  // hostsocket: '/var/run/mysqld/mysqld.sock',
-  // port: '3306'
+  user: 'hellohello810',
+  password: 'porkchop3438',
+  database: 'zelp',
+  host: 'zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com'
 });
 
 connection.connect();
