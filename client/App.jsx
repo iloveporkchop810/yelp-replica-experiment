@@ -111,7 +111,7 @@ class App extends React.Component {
           : <MainUser user={this.state.mainUser}
                       business={this.state.businessName}
                       postReview={this.postReview.bind(this)} />}
-        {this.state.userReviews.map((user, i) => <User user={user} key={i}/>)}
+        {this.state.userReviews.map((user, i) => <User user={user} key={i} tie={user.id}/>)}
       </div>
     )
   }

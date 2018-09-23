@@ -13,18 +13,21 @@ import ThreeStar from './images/UserComponentImages/3Star.png';
 import FourStar from './images/UserComponentImages/4Star.png';
 import FiveStar from './images/UserComponentImages/5Star.png';
 import moment from 'moment';
+import axios from 'axios';
 
 class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+    
       hover: false,
       defaultSentence: "blahdiblahblah boop",
       changeClass: false,
       usefulButton: [false, this.props.user.usefulButton],
       funnyButton: [false, this.props.user.funnyButton],
-      coolButton: [false, this.props.user.coolButton]
+      coolButton: [false, this.props.user.coolButton],
     }
+    console.log(this.state)
   }
 
   //butt is for button
@@ -33,14 +36,10 @@ class User extends React.Component {
       defaultSentence: "Thanks for your vote!",
       changeClass: true
     }
-    //dont want to send so many POST requests (as user toggle the vote buttons)... 
-    //must find way to do a promise perhaps, for the state at refresh?
-    //find a way to collect all the votes and send all at once at some point?
     if (this.state[butt][0]) {
       voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
     } else {
       voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
-      //axios.post(`/businesses/${this.props.user.Businesskey}/reviews/${this.props.user.id}/${this.state[butt]}`
     }
     this.setState(voteObj);
     
