@@ -3,7 +3,7 @@ import './DropDownMenu.css';
 import buttonSpan from './images/buttonSpan.png';
 import MenuItem from './MenuItem.jsx';
 
-var sortingKey = {
+var sortingKey = {                  
   'Newest First': 'DateTime_DESC',
   'Oldest First': 'DateTime_ASC',
   'Highest Rated': 'StarRating_DESC',

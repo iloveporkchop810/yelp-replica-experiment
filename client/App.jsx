@@ -7,16 +7,18 @@ import User from './Component/User.jsx';
 import MainPerson from '../SampleGETresponse/LoggedInUser.js';
 import './App.css';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       mainUser: MainPerson, //default
       userReviews: [],
+      userReviewsHolder: [],
       businessName: '',
       reviewPosted: false,
+      unmounted: false
     }
+    console.log(this.state.unmounted)
   }
   componentWillMount() {
     this.searchBusiness();
@@ -28,10 +30,21 @@ class App extends React.Component {
     // axios.get(`/businesses/${name}/reviews`)
     axios.get(`/api${window.location.pathname}reviews`) //----> for proxy server
       .then(response => {
+        response.data.forEach(obj => obj.userProps = 
+          {
+            defaultSentence: "blahdiblahblah boop",
+            changeClass: false,
+            usefulButton: [false, obj.usefulButton],
+            funnyButton: [false, obj.funnyButton],
+            coolButton: [false, obj.coolButton],
+          }
+        )
         this.setState({
           userReviews: response.data,
+          userReviewsHolder: response.data,
           businessName: response.data[0].BizName,
         })
+        console.log('heyo', this.state.userReviews)
       })
       .catch(error => {
         console.log('initial startup error: ', error);
@@ -39,30 +52,56 @@ class App extends React.Component {
   }
 
   sortSelection(value) {
-    // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_sort/${value}`)
-    axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`) //----> for proxy server
-      .then(response => {
-        this.setState({
-          userReviews: response.data
-        })
-      })
-      .catch(error => {
-        console.log('axios sort error: ', error);
-      })
+    var sortParam = value.split('_');
+    var sortedUsers;
+    if (sortParam[1] === 'DESC') {
+      sortedUsers = this.state.userReviewsHolder.sort((a, b) => 
+        sortParam[0] === 'DateTime' ? 
+        new Date(b[sortParam[0]]).getTime() - new Date(a[sortParam[0]]).getTime():
+        b[sortParam[0]] - a[sortParam[0]]
+      );
+    } else {
+      sortedUsers = this.state.userReviewsHolder.sort((a, b) => 
+        sortParam[0] === 'DateTime' ? 
+        new Date(a[sortParam[0]]).getTime() - new Date(b[sortParam[0]]).getTime():
+        a[sortParam[0]] - b[sortParam[0]]
+      );
+    }
+    this.setState({userReviews: sortedUsers})
   }
 
   filterSelection(value) {
-    // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_filter/${value}`)
-    axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) //----> for proxy server
-      .then(response => {
-        this.setState({
-          userReviews: response.data
-        })
-      })
-      .catch(error => {
-        console.log('axios filter error: ', error)
-      })
+    var filteredUsers = this.state.userReviewsHolder.filter(each => each.Language === value)
+    this.setState({userReviews: filteredUsers})
   }
+
+  //BELOW = for when doing GET requests with each sort/filter
+
+  // sortSelection(value) {     
+  //   // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_sort/${value}`)
+  //   axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`) //----> for proxy server
+  //     .then(response => {
+  //       this.setState({
+  //         userReviews: response.data
+  //       })
+  //     })
+  //     .catch(error => {
+  //       console.log('axios sort error: ', error);
+  //     })
+  // }
+
+  // filterSelection(value) {
+  //   // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_filter/${value}`)
+  //   axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) //----> for proxy server
+  //     .then(response => {
+  //       this.setState({
+  //         userReviews: response.data
+  //       })
+  //     })
+  //     .catch(error => {
+  //       console.log('axios filter error: ', error)
+  //     })
+  // }
 
   //this will have to be modified when not using default values (ex user id)
   postReview(reviewObj) {
@@ -87,7 +126,7 @@ class App extends React.Component {
     //right now, not posting any reviews, because main user does not exist in db. 
     //will have to set up where when 'log in' add to users table
 
-///business/${this.state.userReviews[0].Businesskey}
+    ///business/${this.state.userReviews[0].Businesskey}
     // axios.post(`/businesses/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
     axios.post(`/api${window.location.pathname}reviews`, postObj) //----> for proxy server
       .then(response => {

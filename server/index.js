@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
@@ -6,6 +7,7 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use('/reviews-service/:id', express.static(path.join(__dirname, '../public')));
 app.use(cors());

@@ -19,30 +19,37 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    
       hover: false,
-      defaultSentence: "blahdiblahblah boop",
-      changeClass: false,
-      usefulButton: [false, this.props.user.usefulButton],
-      funnyButton: [false, this.props.user.funnyButton],
-      coolButton: [false, this.props.user.coolButton],
+      // defaultSentence: "blahdiblahblah boop",
+      // changeClass: false,
+      // usefulButton: [false, this.props.user.usefulButton],
+      // funnyButton: [false, this.props.user.funnyButton],
+      // coolButton: [false, this.props.user.coolButton],
     }
-    console.log(this.state)
   }
 
   //butt is for button
   voteButton(butt) {
-    var voteObj = {
-      defaultSentence: "Thanks for your vote!",
-      changeClass: true
-    }
-    if (this.state[butt][0]) {
-      voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
+    var voteObj = this.props.user.userProps;
+    voteObj.defaultSentence = "Thanks for your vote!";
+    voteObj.changeClass = true;
+    if (voteObj[butt][0]) {
+      voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] - 1];
     } else {
-      voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
+      voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] + 1];
     }
-    this.setState(voteObj);
-    
+    //made the above changes so that button 'states' persists with the specific user 
+
+    // var voteObj = {
+    //   defaultSentence: "Thanks for your vote!",
+    //   changeClass: true
+    // }
+    // if (this.state[butt][0]) {
+    //   voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
+    // } else {
+    //   voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
+    // }
+    // this.setState(voteObj); 
   }
 
   //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
@@ -50,7 +57,7 @@ class User extends React.Component {
 
     const stars = [OneStar, TwoStar, ThreeStar, FourStar, FiveStar];
     let dateParseFinal = moment(this.props.user.DateTime).format('l');
-
+    let userProps = this.props.user.userProps
     return (
       <div className='other-user'
            onMouseOver={() => this.setState({ hover: true })}
@@ -72,25 +79,25 @@ class User extends React.Component {
           <div className='review-body'>{this.props.user.ReviewBody}</div>
           {!this.props.isMain ? (
             <div className='bottom-bar'>
-              <div className={this.state.changeClass ? 'green' : 'voter-statement'} >{this.state.defaultSentence}</div>
+              <div className={userProps.changeClass ? 'green' : 'voter-statement'} >{userProps.defaultSentence}</div>
               <div className='button-wrapper'>
-                <button className={this.state.usefulButton[0] ? 'blue' : 'button'}
+                <button className={userProps.usefulButton[0] ? 'blue' : 'button'}
                         onClick={() => this.voteButton('usefulButton')}>
                   <span className='x'><img className='button-image' src={buttonUseful} />Useful
-                                <div className='number'>{this.state.usefulButton[1] > 0 ? 
-                                                         this.state.usefulButton[1] : null}</div></span>
+                                <div className='number'>{userProps.usefulButton[1] > 0 ? 
+                                                         userProps.usefulButton[1] : null}</div></span>
                 </button>
-                <button className={this.state.funnyButton[0] ? 'blue' : 'button'}
+                <button className={userProps.funnyButton[0] ? 'blue' : 'button'}
                         onClick={() => this.voteButton('funnyButton')}>
                   <span className='x'><img className='button-image' src={buttonFunny} />Funny
-                                <div className='number'>{this.state.funnyButton[1] > 0 ? 
-                                                         this.state.funnyButton[1] : null}</div></span>
+                                <div className='number'>{userProps.funnyButton[1] > 0 ? 
+                                                         userProps.funnyButton[1] : null}</div></span>
                 </button>
-                <button className={this.state.coolButton[0] ? 'blue' : 'button'} 
+                <button className={userProps.coolButton[0] ? 'blue' : 'button'} 
                         onClick={() => this.voteButton('coolButton')}>
                   <span className='x'><img className='button-image' src={buttonCool} />Cool
-                                <div className='number'>{this.state.coolButton[1] > 0 ? 
-                                                         this.state.coolButton[1] : null}</div></span>
+                                <div className='number'>{userProps.coolButton[1] > 0 ? 
+                                                         userProps.coolButton[1] : null}</div></span>
                 </button>
                 <button className='flag-button'><img className='flag-image' src={buttonFlag} /></button>
               </div>
