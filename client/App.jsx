@@ -16,19 +16,17 @@ class App extends React.Component {
       userReviewsHolder: [],
       businessName: '',
       reviewPosted: false,
-      unmounted: false
     }
-    console.log(this.state.unmounted)
   }
   componentWillMount() {
     this.searchBusiness();
   }
 
 //window.location.pathname = /business/:id/ ----> for the proxy server
+//                         = /reviews-service/:id ----> for component
   searchBusiness(name) {
     name = name || (Math.floor(Math.random() * 100));
-    // axios.get(`/businesses/${name}/reviews`)
-    axios.get(`/api${window.location.pathname}reviews`) //----> for proxy server
+    axios.get(`/api${window.location.pathname}reviews`) 
       .then(response => {
         response.data.forEach(obj => obj.userProps = 
           {
@@ -44,7 +42,6 @@ class App extends React.Component {
           userReviewsHolder: response.data,
           businessName: response.data[0].BizName,
         })
-        console.log('heyo', this.state.userReviews)
       })
       .catch(error => {
         console.log('initial startup error: ', error);
@@ -126,9 +123,7 @@ class App extends React.Component {
     //right now, not posting any reviews, because main user does not exist in db. 
     //will have to set up where when 'log in' add to users table
 
-    ///business/${this.state.userReviews[0].Businesskey}
-    // axios.post(`/businesses/${this.state.userReviews[0].Businesskey}/reviews`, postObj)
-    axios.post(`/api${window.location.pathname}reviews`, postObj) //----> for proxy server
+    axios.post(`/api${window.location.pathname}reviews`, postObj)
       .then(response => {
         console.log('Review Successfully Posted')
       })

@@ -1,14 +1,14 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  // user: 'hellohello810',
-  // password: 'porkchop3438',
-  // database: 'zelp',
-  // host: 'zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com'
+  user: 'hellohello810',
+  password: 'porkchop3438',
+  database: 'zelp',
+  host: 'zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com'
 
-  user: 'root',
-  password: '',
-  database: 'zelp'
+  // user: 'root',
+  // password: '',
+  // database: 'zelp'
 });
 
 connection.connect();
@@ -28,6 +28,7 @@ const businessPageReviewsLoading = (businessId, callback) => {
   });
 };
 
+//Since the button update, no longer sending GET requests for sort and filter
 const reviewsSorting = (businessSortParam, callback) => {
   const queryString = `SELECT * FROM reviews INNER JOIN users 
                        ON reviews.UserKey = users.id
@@ -41,7 +42,7 @@ const reviewsSorting = (businessSortParam, callback) => {
     }
   });
 };
-
+//Since the button update, no longer sending GET requests for sort and filter
 const reviewsFilter = (businessfilterParam, callback) => {
   const queryString = `SELECT * FROM reviews INNER JOIN users 
                        ON reviews.UserKey = users.id
@@ -69,7 +70,7 @@ const postNewReview = (reviewParams, callback) => {
     }
   });
 };
-// might have to double check the query string
+
 const voteReview = (voteParams, callback) => {
   const queryString = `UPDATE reviews SET reviews.${voteParams[1]} = reviews.${voteParam[1]} + 1 
                        WHERE reviews.BusinessKey = ${voteParams[0]} AND reviews.UserKey = ${voteParam[2]}`;
