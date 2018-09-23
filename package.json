@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon ./server/index.js",
+    "start": "node ./server/index.js",
     "db-init": "mysql -h zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com -u hellohello810 -p < ./database/schema.sql",
     "seed-files": "node ./database/seedFiles/dataGenerator.js",
     "seed-db": "mysqlimport -h zelp-reviews.cgfgu0rdwoln.us-east-1.rds.amazonaws.com -u hellohello810 -p --local --lines-terminated-by='*' zelp ./database/seedFiles/users.csv ./database/seedFiles/businesses.csv ./database/seedFiles/reviews.csv",
