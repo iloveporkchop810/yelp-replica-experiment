@@ -59,7 +59,6 @@ const reviewsFilter = (businessfilterParam, callback) => {
 
 // might have to double check the query string for Foreign Key look up.
 const postNewReview = (reviewParams, callback) => {
-  console.log(reviewParams);
   const queryString = `INSERT INTO reviews (StarRating, ReviewBody, DateTime, Language, Businesskey, UserKey)
                        VALUES (?, ?, ?, ?, ?, (SELECT id FROM users WHERE users.id === UserKey?)`;
   connection.query(queryString, reviewParams, (err, result) => {
@@ -71,16 +70,21 @@ const postNewReview = (reviewParams, callback) => {
   });
 };
 
+// probably a performance downer...but dont know another way, yet
 const voteReview = (voteParams, callback) => {
-  const queryString = `UPDATE reviews SET reviews.${voteParams[1]} = reviews.${voteParam[1]} + 1 
-                       WHERE reviews.BusinessKey = ${voteParams[0]} AND reviews.UserKey = ${voteParam[2]}`;
-  connection.query(queryString, (err, result) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, result);
-    }
-  });
+  let votesArr = voteParams[1];
+  for (var i = 0; i < votesArr.length; i ++) {
+    const queryString = `UPDATE reviews SET reviews.${votesArr[i][1]} = ${votesArr[i][2]}
+                         WHERE reviews.BusinessKey = ${voteParams[0]} AND reviews.UserKey = ${votesArr[i][0]}`;                 
+    connection.query(queryString, (err, result) => {
+      console.log(queryString); 
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
 };
 
 module.exports.businessPageReviewsLoading = businessPageReviewsLoading;

@@ -60,19 +60,14 @@ app.post('*/:id/reviews', (req, res) => {
 
 // one day will link the voter to reviewer. that's for another time.
 app.post('*/:id/reviews/vote', (req, res) => { 
-  console.log(req.body);
-  // const voteParam = [];
-  // for (var key in req.body) {
-  //   voteParam.push([req.params.id, key.userid, key.votebutton])
-  // }
-  // const voteParam = [req.params.id, req.params.userId, req.params.votebutton];
-  // db.voteReview(voteParam, (err) => {
-  //   if (err) {
-  //     console.log('Error: vote');
-  //   } else {
-  //     res.sendStatus(201);
-  //   }
-  // });
+  const voteParam = [req.params.id, req.body];
+  db.voteReview(voteParam, (err) => {
+    if (err) {
+      console.log('Error: vote');
+    } else {
+      res.sendStatus(201);
+    }
+  });
 });
 
 app.listen(8080, () => console.log('Server listening on port 8080'));

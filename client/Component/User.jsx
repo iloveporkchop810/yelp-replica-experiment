@@ -13,7 +13,6 @@ import ThreeStar from './images/UserComponentImages/3Star.png';
 import FourStar from './images/UserComponentImages/4Star.png';
 import FiveStar from './images/UserComponentImages/5Star.png';
 import moment from 'moment';
-import axios from 'axios';
 
 class User extends React.Component {
   constructor(props) {
@@ -22,37 +21,21 @@ class User extends React.Component {
       hover: false,
       defaultSentence: "blahdiblahblah boop",
       changeClass: false,
-      // defaultSentence: "blahdiblahblah boop",     
-      // changeClass: false,
-      // usefulButton: [false, this.props.user.usefulButton],
-      // funnyButton: [false, this.props.user.funnyButton],
-      // coolButton: [false, this.props.user.coolButton],
     }
   }
 
   //butt is for button
   voteButton(butt) {
     var voteObj = this.props.user.userProps;
-    voteObj.defaultSentence = "Thanks for your vote!";
-    voteObj.changeClass = true;
     if (voteObj[butt][0]) {
       voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] - 1];
     } else {
       voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] + 1];
     }
-    //made the above changes so that button 'states' persists with the specific user 
-    //if you dont like it, toggle the commented out states, and the code below. 
-
-    // var voteObj = {
-    //   defaultSentence: "Thanks for your vote!",
-    //   changeClass: true
-    // }
-    // if (this.state[butt][0]) {
-    //   voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
-    // } else {
-    //   voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
-    // }
-    // this.setState(voteObj); 
+    this.setState({
+      defaultSentence: "Thanks for your vote!",
+      changeClass: true
+    })
   }
 
   //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
