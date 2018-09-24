@@ -7,6 +7,7 @@ const sortItems = ['Yelp Sort', 'Newest First', 'Oldest First',
                    'Highest Rated', 'Lowest Rated', 'Elites'];
 const filterItems = ['English', 'Spanish', 'Italian', 'Chinese'];
 
+//I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
 const Search = (props) => {
   return (
     <div className='review-header'>

@@ -20,7 +20,9 @@ class User extends React.Component {
     super(props);
     this.state = {
       hover: false,
-      // defaultSentence: "blahdiblahblah boop",
+      defaultSentence: "blahdiblahblah boop",
+      changeClass: false,
+      // defaultSentence: "blahdiblahblah boop",     
       // changeClass: false,
       // usefulButton: [false, this.props.user.usefulButton],
       // funnyButton: [false, this.props.user.funnyButton],
@@ -39,6 +41,7 @@ class User extends React.Component {
       voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] + 1];
     }
     //made the above changes so that button 'states' persists with the specific user 
+    //if you dont like it, toggle the commented out states, and the code below. 
 
     // var voteObj = {
     //   defaultSentence: "Thanks for your vote!",
@@ -79,7 +82,7 @@ class User extends React.Component {
           <div className='review-body'>{this.props.user.ReviewBody}</div>
           {!this.props.isMain ? (
             <div className='bottom-bar'>
-              <div className={userProps.changeClass ? 'green' : 'voter-statement'} >{userProps.defaultSentence}</div>
+              <div className={this.state.changeClass ? 'green' : 'voter-statement'} >{this.state.defaultSentence}</div>
               <div className='button-wrapper'>
                 <button className={userProps.usefulButton[0] ? 'blue' : 'button'}
                         onClick={() => this.voteButton('usefulButton')}>

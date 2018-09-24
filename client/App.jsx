@@ -6,32 +6,53 @@ import MainUser from './Component/MainUser.jsx';
 import User from './Component/User.jsx';
 import MainPerson from '../SampleGETresponse/LoggedInUser.js';
 import './App.css';
-
+var holder;
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       mainUser: MainPerson, //default
       userReviews: [],
-      userReviewsHolder: [],
+      userReviewsHolder: holder,
       businessName: '',
       reviewPosted: false,
     }
+    this.voteButtonPost = this.voteButtonPost.bind(this);
   }
   componentWillMount() {
     this.searchBusiness();
   }
 
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.voteButtonPost);
+  }
+  
+  componentWillUnmount() {
+    // if (this.state.userReviewsHolder) {
+    this.voteButtonPost();     
+    window.removeEventListener('beforeunload', this.voteButtonPost);
+  }
+
+  voteButtonPost() {
+    let buttonVoteCollection = this.state.userReviewsHolder.reduce((acc, user) => {
+      for (var buttonArr in user.userProps) {
+        if (user.userProps[buttonArr][0]) {
+          acc.push([user.UserKey, buttonArr, user.userProps[buttonArr][1]]);
+        }
+      }
+      return acc;
+    }, []);  
+    axios.post(`/api${window.location.pathname}reviews/vote`, buttonVoteCollection) 
+  }
+
 //window.location.pathname = /business/:id/ ----> for the proxy server
 //                         = /reviews-service/:id ----> for component
   searchBusiness(name) {
-    name = name || (Math.floor(Math.random() * 100));
+    // name = name || (Math.floor(Math.random() * 100));
     axios.get(`/api${window.location.pathname}reviews`) 
       .then(response => {
         response.data.forEach(obj => obj.userProps = 
           {
-            defaultSentence: "blahdiblahblah boop",
-            changeClass: false,
             usefulButton: [false, obj.usefulButton],
             funnyButton: [false, obj.funnyButton],
             coolButton: [false, obj.coolButton],

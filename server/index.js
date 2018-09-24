@@ -9,10 +9,10 @@ const app = express();
 
 app.use(compression());
 app.use(bodyParser.json());
+// TODO: could learn more about paths and urls...will put on list of todos
 app.use('/reviews-service/:id', express.static(path.join(__dirname, '../public')));
 app.use(cors());
 
-// could learn more about paths and urls...will put on list of todos
 app.get('*/:id/reviews', (req, res) => { 
   db.businessPageReviewsLoading(req.params.id, (err, result) => {
     if (err) {
@@ -59,15 +59,20 @@ app.post('*/:id/reviews', (req, res) => {
 });
 
 // one day will link the voter to reviewer. that's for another time.
-app.post('*/:id/reviews/:userId/:votebutton', (req, res) => { 
-  const voteParam = [req.params.id, req.params.userId, req.params.votebutton];
-  db.voteReview(voteParam, (err) => {
-    if (err) {
-      console.log('Error: vote');
-    } else {
-      res.sendStatus(201);
-    }
-  });
+app.post('*/:id/reviews/vote', (req, res) => { 
+  console.log(req.body);
+  // const voteParam = [];
+  // for (var key in req.body) {
+  //   voteParam.push([req.params.id, key.userid, key.votebutton])
+  // }
+  // const voteParam = [req.params.id, req.params.userId, req.params.votebutton];
+  // db.voteReview(voteParam, (err) => {
+  //   if (err) {
+  //     console.log('Error: vote');
+  //   } else {
+  //     res.sendStatus(201);
+  //   }
+  // });
 });
 
 app.listen(8080, () => console.log('Server listening on port 8080'));
