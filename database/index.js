@@ -79,10 +79,17 @@ const voteReview = (voteParams, callback) => {
     connection.query(queryString, (err, result) => {
       console.log(queryString); 
       if (err) {
+        console.log(err)
         callback(err, null);
-      } else {
-        callback(null, result);
       }
+      //TODO: have async problems, 'throw err; // Rethrow non-MySQL error'
+      //'Error: Can't set headers after they are sent'
+      // at validateHeader (_http_outgoing.js:491:11)
+      // at ServerResponse.setHeader (_http_outgoing.js:498:3)
+
+      // } else {
+      //   callback(null, result);
+      // }
     });
   }
 };

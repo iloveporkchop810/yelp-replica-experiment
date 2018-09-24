@@ -19,6 +19,7 @@ class App extends React.Component {
     }
     this.voteButtonPost = this.voteButtonPost.bind(this);
   }
+
   componentWillMount() {
     this.searchBusiness();
   }
@@ -28,7 +29,6 @@ class App extends React.Component {
   }
   
   componentWillUnmount() {
-    // if (this.state.userReviewsHolder) {
     this.voteButtonPost();     
     window.removeEventListener('beforeunload', this.voteButtonPost);
   }
