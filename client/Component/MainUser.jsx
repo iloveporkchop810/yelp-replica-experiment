@@ -51,6 +51,7 @@ class MainUser extends React.Component {
         showInputBox: false
       })
 
+      //couldnt get the right moment.js thing to make this work, in time...
       var timeStamp = new Date().toLocaleString()
       var timeStampParse = timeStamp.split(' ');
       var timeShuffle = timeStampParse[0].split('/');

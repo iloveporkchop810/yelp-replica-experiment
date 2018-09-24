@@ -21,29 +21,21 @@ class User extends React.Component {
       hover: false,
       defaultSentence: "blahdiblahblah boop",
       changeClass: false,
-      usefulButton: [false, this.props.user.usefulButton],
-      funnyButton: [false, this.props.user.funnyButton],
-      coolButton: [false, this.props.user.coolButton]
     }
   }
 
   //butt is for button
   voteButton(butt) {
-    var voteObj = {
+    var voteObj = this.props.user.userProps;
+    if (voteObj[butt][0]) {
+      voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] - 1];
+    } else {
+      voteObj[butt] = [!voteObj[butt][0], voteObj[butt][1] + 1];
+    }
+    this.setState({
       defaultSentence: "Thanks for your vote!",
       changeClass: true
-    }
-    //dont want to send so many POST requests (as user toggle the vote buttons)... 
-    //must find way to do a promise perhaps, for the state at refresh?
-    //find a way to collect all the votes and send all at once at some point?
-    if (this.state[butt][0]) {
-      voteObj[butt] = [!this.state[butt][0], this.state[butt][1] - 1];
-    } else {
-      voteObj[butt] = [!this.state[butt][0], this.state[butt][1] + 1];
-      //axios.post(`/businesses/${this.props.user.Businesskey}/reviews/${this.props.user.id}/${this.state[butt]}`
-    }
-    this.setState(voteObj);
-    
+    })
   }
 
   //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
@@ -51,7 +43,7 @@ class User extends React.Component {
 
     const stars = [OneStar, TwoStar, ThreeStar, FourStar, FiveStar];
     let dateParseFinal = moment(this.props.user.DateTime).format('l');
-
+    let userProps = this.props.user.userProps
     return (
       <div className='other-user'
            onMouseOver={() => this.setState({ hover: true })}
@@ -75,23 +67,23 @@ class User extends React.Component {
             <div className='bottom-bar'>
               <div className={this.state.changeClass ? 'green' : 'voter-statement'} >{this.state.defaultSentence}</div>
               <div className='button-wrapper'>
-                <button className={this.state.usefulButton[0] ? 'blue' : 'button'}
+                <button className={userProps.usefulButton[0] ? 'blue' : 'button'}
                         onClick={() => this.voteButton('usefulButton')}>
                   <span className='x'><img className='button-image' src={buttonUseful} />Useful
-                                <div className='number'>{this.state.usefulButton[1] > 0 ? 
-                                                         this.state.usefulButton[1] : null}</div></span>
+                                <div className='number'>{userProps.usefulButton[1] > 0 ? 
+                                                         userProps.usefulButton[1] : null}</div></span>
                 </button>
-                <button className={this.state.funnyButton[0] ? 'blue' : 'button'}
+                <button className={userProps.funnyButton[0] ? 'blue' : 'button'}
                         onClick={() => this.voteButton('funnyButton')}>
                   <span className='x'><img className='button-image' src={buttonFunny} />Funny
-                                <div className='number'>{this.state.funnyButton[1] > 0 ? 
-                                                         this.state.funnyButton[1] : null}</div></span>
+                                <div className='number'>{userProps.funnyButton[1] > 0 ? 
+                                                         userProps.funnyButton[1] : null}</div></span>
                 </button>
-                <button className={this.state.coolButton[0] ? 'blue' : 'button'} 
+                <button className={userProps.coolButton[0] ? 'blue' : 'button'} 
                         onClick={() => this.voteButton('coolButton')}>
                   <span className='x'><img className='button-image' src={buttonCool} />Cool
-                                <div className='number'>{this.state.coolButton[1] > 0 ? 
-                                                         this.state.coolButton[1] : null}</div></span>
+                                <div className='number'>{userProps.coolButton[1] > 0 ? 
+                                                         userProps.coolButton[1] : null}</div></span>
                 </button>
                 <button className='flag-button'><img className='flag-image' src={buttonFlag} /></button>
               </div>
