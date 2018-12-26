@@ -38,17 +38,3 @@ CREATE TABLE reviews (
 );
 
 
--- CREATE TABLE test (
---     StarRating INT NOT NULL,
---     ReviewBody VARCHAR(500) NOT NULL,
---     DateTime DATETIME NOT NULL,
---     Language VARCHAR(10),
---     usefulButton INT,
---     funnyButton INT,
---     coolButton INT,
---     Businesskey INT NOT NULL,
---     UserKey INT NOT NULL,
---     id INT NOT NULL AUTO_INCREMENT, 
---     PRIMARY KEY (id)
--- );
-

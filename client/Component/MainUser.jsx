@@ -5,7 +5,9 @@ import Star from './Star.jsx';
 import './MainUser.css';
 
 
-const defaultInput = 'Your review helps others learn about great local businesses. \n\nPlease Dont review this business if you received a freebie for writing this review, or if you\'re connected in any way to the owner or employees.';
+const defaultInput = 'Your review helps others learn about great local businesses.'+
+  ' \n\nPlease Dont review this business if you received a freebie for writing this review,'+
+  ' or if you\'re connected in any way to the owner or employees.';
 
 class MainUser extends React.Component {
   constructor(props) {
@@ -21,7 +23,6 @@ class MainUser extends React.Component {
   }
 
   showInputBox() {
-    console.log('pew pew pew pewwwww')
     this.setState({
       showInputBox: true
     });
@@ -51,7 +52,6 @@ class MainUser extends React.Component {
         showInputBox: false
       })
 
-      //couldnt get the right moment.js thing to make this work, in time...
       var timeStamp = new Date().toLocaleString()
       var timeStampParse = timeStamp.split(' ');
       var timeShuffle = timeStampParse[0].split('/');
@@ -95,7 +95,9 @@ class MainUser extends React.Component {
             </div>
             <div>
               <span className='review-link' href='#'
-                    onClick={() => this.showInputBox()}>Start your review of <strong>{this.props.business}</strong></span>
+                    onClick={() => this.showInputBox()}>
+                Start your review of <strong>{this.props.business}</strong>
+              </span>
             </div>
             {this.state.showInputBox ? inputField : null}
           </div>

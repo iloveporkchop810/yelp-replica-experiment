@@ -1,6 +1,6 @@
 {
   "name": "zelp-reviews-module",
-  "description": "HR FEC",
+  "description": "experimental Yelp replica",
   "author": "Sophia",
   "license": "ISC",
   "version": "1.0.0",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "start": "node ./server/index.js",
+    "start": "nodemon ./server/index.js",
     "db-init": "mysql -u root < ./database/schema.sql",
     "seed-files": "node ./database/seedFiles/dataGenerator.js",
     "seed-db": "mysqlimport -u root --local --lines-terminated-by='*' zelp ./database/seedFiles/users.csv ./database/seedFiles/businesses.csv ./database/seedFiles/reviews.csv",
@@ -59,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2-hangry/ZELP-reviews-module.git"
+    "url": "git+https://github.com/iloveporkchop810/zelp.git"
   },
   "bugs": {
-    "url": "https://github.com/2-hangry/ZELP-reviews-module/issues"
+    "url": "https://github.com/iloveporkchop810/zelp/issues"
   },
-  "homepage": "https://github.com/2-hangry/ZELP-reviews-module#readme"
+  "homepage": "https://github.com/iloveporkchop810/zelp#readme"
 }
