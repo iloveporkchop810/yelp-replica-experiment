@@ -6,14 +6,14 @@ import MainUser from './Component/MainUser.jsx';
 import User from './Component/User.jsx';
 import MainPerson from '../SampleGETresponse/LoggedInUser.js';
 import './App.css';
-var holder;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainUser: MainPerson, //default
+      mainUser: MainPerson, //default dummy data
       userReviews: [],
-      userReviewsHolder: holder,
+      userReviewsHolder: [],
       businessName: '',
       reviewPosted: false,
     }
@@ -23,16 +23,19 @@ class App extends React.Component {
   componentWillMount() {
     this.searchBusiness();
   }
-
+  
+  //User can toggle infinitely the vote buttons, votes are collected
+  //and only the final voting counts before exit are posted and saved to database. 
   componentDidMount() {
     window.addEventListener('beforeunload', this.voteButtonPost);
   }
-  
+
   componentWillUnmount() {
     this.voteButtonPost();     
     window.removeEventListener('beforeunload', this.voteButtonPost);
   }
 
+  //userProps contains vote button information: [<toggled?(bool)>, count]
   voteButtonPost() {
     let buttonVoteCollection = this.state.userReviewsHolder.reduce((acc, user) => {
       for (var buttonArr in user.userProps) {
@@ -46,9 +49,8 @@ class App extends React.Component {
   }
 
 //window.location.pathname = /business/:id/ ----> for the proxy server
-//                         = /reviews-service/:id ----> for component
+//                         = /reviews-service/:id ----> for module
   searchBusiness(name) {
-    // name = name || (Math.floor(Math.random() * 100));
     axios.get(`/api${window.location.pathname}reviews`) 
       .then(response => {
         response.data.forEach(obj => obj.userProps = 
@@ -69,6 +71,8 @@ class App extends React.Component {
       })
   }
 
+  //Client side sorting and filtering
+  //Since there arent that many reviews, client side sorting will do. 
   sortSelection(value) {
     var sortParam = value.split('_');
     var sortedUsers;
@@ -85,72 +89,51 @@ class App extends React.Component {
         a[sortParam[0]] - b[sortParam[0]]
       );
     }
-    this.setState({userReviews: sortedUsers})
+    this.setState({userReviews: sortedUsers});
   }
 
   filterSelection(value) {
     var filteredUsers = this.state.userReviewsHolder.filter(each => each.Language === value)
-    this.setState({userReviews: filteredUsers})
+    this.setState({userReviews: filteredUsers});
   }
 
-  //BELOW = for when doing GET requests with each sort/filter
+  //BELOW = Server Side sort and filter
+    //No longer makes sense for this specific experiment, because chose to collect vote counts on
+    //componentWillUnmount. If get data back from db will earase vote collection counts. 
+      //Future consideration = set up time interval for posting vote counts intermittenly
 
-  // sortSelection(value) {     
-  //   // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_sort/${value}`)
-  //   axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`) //----> for proxy server
-  //     .then(response => {
-  //       this.setState({
-  //         userReviews: response.data
-  //       })
-  //     })
-  //     .catch(error => {
-  //       console.log('axios sort error: ', error);
-  //     })
-  // }
+  /*sortSelection(value) {     
+    axios.get(`/api${window.location.pathname}reviews/reviews_sort/${value}`)
+      .then(response => {
+        this.setState({
+          userReviews: response.data
+        })
+      })
+      .catch(error => {
+        console.log('axios sort error: ', error);
+      })
+  }
 
-  // filterSelection(value) {
-  //   // axios.get(`/businesses/${this.state.userReviews[0].Businesskey}/reviews/reviews_filter/${value}`)
-  //   axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) //----> for proxy server
-  //     .then(response => {
-  //       this.setState({
-  //         userReviews: response.data
-  //       })
-  //     })
-  //     .catch(error => {
-  //       console.log('axios filter error: ', error)
-  //     })
-  // }
+  filterSelection(value) {
+    axios.get(`/api${window.location.pathname}reviews/reviews_filter/${value}`) 
+      .then(response => {
+        this.setState({
+          userReviews: response.data
+        })
+      })
+      .catch(error => {
+        console.log('axios filter error: ', error)
+      })
+  }*/
 
-  //this will have to be modified when not using default values (ex user id)
+  //MainUser not set up to exist in DB yet. For now postReview is only temporary to each session.
   postReview(reviewObj) {
-
-    var updateUser = Object.assign(this.state.mainUser, reviewObj);
+    var updateUser = Object.assign({}, this.state.mainUser, reviewObj);
     var stateObj = {};
     stateObj.mainUser = updateUser;
     stateObj.reviewPosted = true;
 
     this.setState(stateObj);
-
-    var postObj = Object.assign(reviewObj, {
-      Businesskey: this.state.userReviews[0].Businesskey,
-      id: 501
-    })
-    delete postObj.PhotoLink; //this is a default thing
-
-    //TODO: for later, can do a SELECT for userId on businessKey first to limit only one review,
-    //if error, then do the POST, or EDIT the response from a success
-    //HOWEVER, ideally the users own review should already be at the top at the business, 
-    //and can only EDIT at that point. 
-    //right now, not posting any reviews, because main user does not exist in db. 
-    //will have to set up where when 'log in' add to users table
-
-    axios.post(`/api${window.location.pathname}reviews`, postObj)
-      .then(response => {
-        console.log('Review Successfully Posted')
-      })
-      .catch(error => {
-        console.log('Post Review Failed: ', error)
-      })
   }
 
   render() {

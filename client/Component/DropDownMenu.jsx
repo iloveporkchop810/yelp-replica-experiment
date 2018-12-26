@@ -46,7 +46,6 @@ class DropDown extends React.Component {
   render() {
     return (
       <div className='drop-down'>
-        {/* <div className={this.state.isFilter ? 'redline' : ''}> */}
         <div className='redline'>
           <span onClick={this.showMenu.bind(this)}>
             {this.state.isFilter ? "Language " : "Sort by "}

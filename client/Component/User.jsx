@@ -38,7 +38,6 @@ class User extends React.Component {
     })
   }
 
-  //I must apologize to who ever is reading this ugly code. I HATE CSS... sorry for the clutter of classNames
   render() {
 
     const stars = [OneStar, TwoStar, ThreeStar, FourStar, FiveStar];
